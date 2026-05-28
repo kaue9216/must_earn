@@ -9,6 +9,8 @@ class MustEarn(QWidget):
     def __init__(self):
         super().__init__()
 
+        # CRIACAO DOS BOTOES, TEXTOS, INPUTS, ETC
+
         self.titulo = QLabel("MUST EARN")
 
 
@@ -68,6 +70,7 @@ class MustEarn(QWidget):
 
     
     def initUi(self):
+        #CRIACAO DO LAYOUT DA INTERFACE
         self.setWindowTitle("MUST EARN")
 
         vbox = QVBoxLayout()
@@ -128,13 +131,12 @@ class MustEarn(QWidget):
 
         self.setLayout(vbox)
 
-        
+        #ESSA LISTA PEGA OS INPUTS DAS ACOES E JUNTA EM LISTA PARA NAO TER Q CHAMAR UM POR UM
         self.acoes_valores = [self.acao_1, self.acao_2, self.acao_3,
-                         self.acao_4, self.acao_5, self.acao_6,
-                         self.acao_7, self.acao_8, self.acao_9]
+                              self.acao_4, self.acao_5, self.acao_6,
+                              self.acao_7, self.acao_8, self.acao_9]
         
-        self.valores_lista = []
-        
+        #QUANDO CLICA O BOTAO RODA ESSA LINHA QUE CHAMA A FUNCAO INICIALIZAR_DADOS_ACOES()
         self.botao_jogar.clicked.connect(self.inicializar_dados_acoes)
         
 
@@ -142,11 +144,11 @@ class MustEarn(QWidget):
 
 
     def get_valores_investidos(self, acoes_valores: list):
-        valores = []
+        valores = [] #LISTA COM O VALOR DO INVESTIMENTO, EM ORDEM
 
         for acao in acoes_valores:
             try:
-                if acao.text() == "":
+                if acao.text() == "": # TENTA PUXAR O VALOR DO INPUT E CASO DE ERRO RESOLVE
                     valor = float(acao.placeholderText())
                     valores.append(valor)
                 else:
@@ -157,6 +159,7 @@ class MustEarn(QWidget):
                 acao.clear()
                 return None
         
+        #DICIONARIO DO KAUE Q VAI SER RETORNADO, COM OS VALORES DOS INVESTIMENTOS
         dicionario_ativos = {
             "bigtech_cons" : float(valores[0]), 
             "bigtech_int" : float(valores[3]), 
@@ -169,7 +172,7 @@ class MustEarn(QWidget):
             "cripto_cons" : float(valores[2]), 
             "cripto_int" : float(valores[5]), 
             "cripto_arr" : float(valores[8])
-        }
+        } 
 
         return dicionario_ativos
 
