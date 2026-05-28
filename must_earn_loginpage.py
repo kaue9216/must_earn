@@ -37,7 +37,7 @@ class MustEarn(QWidget):
         # Imagem
         imagem = QLabel()
 
-        pixmap = QPixmap("/Users/gabrieldudeck/must_earn/must_earn.jpeg")
+        pixmap = QPixmap("./must_earn.jpeg")
 
         pixmap = pixmap.scaled(
             650,
