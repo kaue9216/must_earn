@@ -8,7 +8,7 @@ from PyQt5.QtWidgets import (
     QVBoxLayout
 )
 
-from PyQt5.QtGui import QFont, QPixmap
+from PyQt5.QtGui import  QPixmap
 from PyQt5.QtCore import Qt
 
 
@@ -18,9 +18,6 @@ class MustEarn(QWidget):
 
         self.setWindowTitle("MUST EARN")
         self.setFixedSize(900, 850)
-
-
-
 
         # Layout
         layout = QVBoxLayout()
@@ -40,7 +37,7 @@ class MustEarn(QWidget):
         # Imagem
         imagem = QLabel()
 
-        pixmap = QPixmap("/Users/gabrieldudeck/Downloads/must_earn.jpeg")
+        pixmap = QPixmap("/Users/gabrieldudeck/must_earn/must_earn.jpeg")
 
         pixmap = pixmap.scaled(
             650,
