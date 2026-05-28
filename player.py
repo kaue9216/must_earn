@@ -2,24 +2,24 @@ class Player:
     def __init__(self, nome):
         self.nome = nome
         self.dinheiro = 1500
-        self.vida = 5
+        self.aluguel = 5
         self.comida = 5
         self.remedio = 5
 
-#Funcao Vida
-    def aumentar_vida(self):
-        if self.vida < 5:
-            self.vida += 1
-            print(f"Vida: {self.vida}")
+#Funcao Aluguel
+    def aumentar_aluguel(self):
+        if self.aluguel< 5:
+            self.aluguel += 1
+            print(f"Aluguel: {self.aluguel}")
         else:
-            print("Vida no máximo")
+            print("Aluguel no máximo")
 
-    def diminuir_vida(self):
-        if self.vida > 0:
-            self.vida -= 1
-            print(f"Vida: {self.vida}")
+    def diminuir_aluguel(self):
+        if self.aluguel > 0:
+            self.aluguel -= 1
+            print(f"Aluguel: {self.aluguel}")
         else:
-            print("Sem vida")
+            print("Sem Aluguel")
 
 #Funcao Comida
     def aumentar_comida(self):
@@ -36,7 +36,7 @@ class Player:
         else:
             print("Sem comida")
 
-#Remedio
+#Funcao Remedio
     def aumentar_remdio(self):
         if self.remedio < 5:
             self.remedio += 1
