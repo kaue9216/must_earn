@@ -67,14 +67,18 @@ class Player:
 #Maximo aluguel
     def aumemtar_max_aluguel(self, valor_alteracao):
         self.max_aluguel += valor_alteracao
+        self.aluguel = self.max_aluguel
         print(self.max_aluguel)
+        print(self.aluguel)
 
 # Máximo comida
     def aumentar_max_comida(self, valor_alteracao):
         self.max_comida += valor_alteracao
+        self.comida = self.max_comida
         print(self.max_comida)
 
 # Máximo remédio
     def aumentar_max_remedio(self, valor_alteracao):
         self.max_remedio += valor_alteracao
+        self.remedio = self.max_remedio
         print(self.max_remedio)
