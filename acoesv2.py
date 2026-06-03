@@ -127,3 +127,5 @@ def aplicar_cenario(dicionario):  # Removido o parâmetro cenario daqui
 
     # Retorna o dicionário modificado E o número do cenário sorteado
     return dicionario, cenario
+
+
