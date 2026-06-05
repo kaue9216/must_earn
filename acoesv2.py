@@ -16,7 +16,7 @@ def aplicar_cenario(cenario, dicionario):
         dicionario["cripto_int"] = dicionario["cripto_int"] * (1 + random.randint(-15, 10) / 100)
         dicionario["cripto_arr"] = dicionario["cripto_arr"] * (1 + random.randint(-50, 15) / 100)
 
-    # Cenário 2: Bigtech estáveis, fintech caem e cripto crescem
+    # Cenário 2: Ações bigtech permanecem estáveis, ações fintech caem e ações cripto crescem
     elif cenario == 2:
         dicionario["bigtech_cons"] = dicionario["bigtech_cons"] * (1 + random.randint(0, 10) / 100)
         dicionario["bigtech_int"] = dicionario["bigtech_int"] * (1 + random.randint(-10, 50) / 100)
