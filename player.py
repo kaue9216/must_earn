@@ -1,6 +1,6 @@
 class Player:
     def __init__(self):
-        self.nome = ""
+        self.nome = "João Pedro"
         self.dinheiro = 1500
         self.aluguel = 5
         self.max_aluguel = 5
@@ -82,13 +82,3 @@ class Player:
         self.max_remedio += valor_alteracao
         self.remedio = self.max_remedio
         print(self.max_remedio)
-
-def rest(self):
-        self.nome = ""
-        self.dinheiro = 1500
-        self.aluguel = 5
-        self.max_aluguel = 5
-        self.comida = 5
-        self.max_comida = 5
-        self.remedio = 5
-        self.max_remedio = 5
