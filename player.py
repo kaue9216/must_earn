@@ -1,10 +1,13 @@
 class Player:
-    def __init__(self, nome):
-        self.nome = nome
+    def __init__(self):
+        self.nome = ""
         self.dinheiro = 1500
         self.aluguel = 5
+        self.max_aluguel = 5
         self.comida = 5
+        self.max_comida = 5
         self.remedio = 5
+        self.max_remedio = 5
 
 #Funcao Aluguel
     def aumentar_aluguel(self):
@@ -60,3 +63,32 @@ class Player:
             self.dinheiro -= valor
         else:
             print("Dinheiro Insuficiente")
+
+#Maximo aluguel
+    def aumemtar_max_aluguel(self, valor_alteracao):
+        self.max_aluguel += valor_alteracao
+        self.aluguel = self.max_aluguel
+        print(self.max_aluguel)
+        print(self.aluguel)
+
+# Máximo comida
+    def aumentar_max_comida(self, valor_alteracao):
+        self.max_comida += valor_alteracao
+        self.comida = self.max_comida
+        print(self.max_comida)
+
+# Máximo remédio
+    def aumentar_max_remedio(self, valor_alteracao):
+        self.max_remedio += valor_alteracao
+        self.remedio = self.max_remedio
+        print(self.max_remedio)
+
+def rest(self):
+        self.nome = ""
+        self.dinheiro = 1500
+        self.aluguel = 5
+        self.max_aluguel = 5
+        self.comida = 5
+        self.max_comida = 5
+        self.remedio = 5
+        self.max_remedio = 5

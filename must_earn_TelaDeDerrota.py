@@ -1,25 +1,24 @@
 import sys
-from PyQt5.QtWidgets import (
+from PyQt5.QtWidgets import(
     QApplication,
     QWidget,
     QLabel,
     QPushButton,
-    QLineEdit,
     QVBoxLayout
 )
 
-from PyQt5.QtGui import  QPixmap
+from PyQt5.QtGui import QPixmap
 from PyQt5.QtCore import Qt
 
-
-class MustEarn(QWidget):
+class TelaDeDerrota(QWidget):
     def __init__(self):
         super().__init__()
+
 
         self.setWindowTitle("MUST EARN")
         self.setFixedSize(900, 850)
 
-        # Layout
+        #Layout
         layout = QVBoxLayout()
         layout.setAlignment(Qt.AlignTop | Qt.AlignHCenter)
         layout.setSpacing(30)
@@ -37,7 +36,7 @@ class MustEarn(QWidget):
         # Imagem
         imagem = QLabel()
 
-        pixmap = QPixmap("./must_earn.jpeg")
+        pixmap = QPixmap("./must_earn_TelaDeDerrota.jpeg")
 
         pixmap = pixmap.scaled(
             650,
@@ -52,31 +51,8 @@ class MustEarn(QWidget):
 
         layout.addWidget(imagem)
 
-        # Texto 'Insira o nome de usuario'
-        texto = QLabel("Insira o nome de usuário:")
-        texto.setAlignment(Qt.AlignCenter)
-
-
-        layout.addWidget(texto)
-
-        # Caixa para colocar o nome de usario
-        self.usuario = QLineEdit()
-
-        self.usuario.setPlaceholderText("Usuário...")
-
-        self.usuario.setFixedSize(500, 60)
-
-
-        self.usuario.setStyleSheet("""
-            QLineEdit{
-                padding-left: 20px;
-            }
-        """)
-
-        layout.addWidget(self.usuario, alignment=Qt.AlignCenter)
-
-        # Botao Jogar
-        self.botao = QPushButton("JOGAR")
+        # Botao Para Jogar de novo
+        self.botao = QPushButton("JOGAR DE NOVO")
 
         self.botao.setFixedSize(300, 80)
 
@@ -88,10 +64,20 @@ class MustEarn(QWidget):
         self.setLayout(layout)
 
 
+        # Botao Para Sair
+        self.botao_sair = QPushButton("Sair")
+        self.botao_sair.setFixedSize(300, 80)
+        self.botao_sair.setCursor(Qt.PointingHandCursor)
+        self.botao_sair.setCursor(Qt.PointingHandCursor)
+        self.botao_sair.clicked.connect(QApplication.instance().quit)
+        layout.addWidget(self.botao_sair, alignment=Qt.AlignCenter)
+
+        self.setLayout(layout)
+
 # Executar a tela de login
 app = QApplication(sys.argv)
 
-window = MustEarn()
+window = TelaDeDerrota()
 window.show()
 
 sys.exit(app.exec_())
