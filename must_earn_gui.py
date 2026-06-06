@@ -446,7 +446,7 @@ class MustEarn(QWidget):
     def initUi(self):
         #CRIACAO DO LAYOUT DA INTERFACE
         self.setWindowTitle("MUST EARN")
-        self.setFixedSize(450, 950)
+        self.setFixedSize(450, 550)
 
 
         vbox = QVBoxLayout()
@@ -624,6 +624,7 @@ class MustEarn(QWidget):
         if not status_validos:
             pass
 
+        # Função que chama o histórico na main (Não consegui testar)
         historico.registrar_dia(player)
 
         self.mostrar_cenario()

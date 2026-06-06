@@ -1,22 +1,21 @@
-from player import Player
+# A lista fica guardada aqui, vazia no início do jogo
+lista_historico = []
 
-b = []
-player = Player()
-
-# LINHA 6: A função agora só precisa da lista e do objeto player
-def adicionar_historico(lista_b, player_obj):
-    # Puxa o 'dinheiro' do player para usar como saldo
+def registrar_dia(player_obj):
+    # Atualiza os pontos puxando o dinheiro atual do objeto passado pela GUI
     player_obj.cont_pontos(player_obj.dinheiro)
 
-    # Monta o dicionário puxando os atributos de dentro do objeto (player_obj.atributo)
+    # Monta o dicionário
     a = {
         "aluguel": player_obj.aluguel,
         "comida": player_obj.comida,
         "remedio": player_obj.remedio,
         "saldo": player_obj.dinheiro,
-        "pontos" : player_obj.pontos
+        "pontos": player_obj.pontos
     }
-    lista_b.append(a)
 
+    # Adiciona na lista
+    lista_historico.append(a)
 
-
+    # Imprime no terminal para você debugar e acompanhar
+    print(f"Histórico atualizado: {lista_historico}")
