@@ -8,6 +8,7 @@ class Player:
         self.max_comida = 5
         self.remedio = 5
         self.max_remedio = 5
+        self.pontos = 0
 
 #Funcao Aluguel
     def aumentar_aluguel(self):
@@ -64,7 +65,7 @@ class Player:
             self.dinheiro += dicionario_atualizado[key]
             lucro_total_rodada += dicionario_atualizado[key] - dicionario_investimentos_iniciais[key]
         return lucro_total_rodada
-        
+
 
     def aplicar_dinheiro(self,valor):
         if self.dinheiro >= valor:
@@ -86,3 +87,6 @@ class Player:
         self.max_comida = 5
         self.remedio = 5
         self.max_remedio = 5
+
+    def cont_pontos(self, valor):
+        self.pontos += valor
