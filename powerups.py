@@ -7,7 +7,7 @@ class MacacoDigital:
         self.comprado = False
 
     def comprar(self):
-        player.adicionar_dinheiro(-50000)
+        player.receber_dinheiro(-50000)
         print(player.dinheiro)
         self.comprado = True
 
@@ -16,7 +16,7 @@ class Alianca:
         self.comprado = False
 
     def comprar(self):
-        player.adicionar_dinheiro(-150)
+        player.receber_dinheiro(-150)
         print(player.dinheiro)
         self.comprado = True
 
@@ -25,7 +25,7 @@ class Kitnet:
         self.comprado = False
 
     def comprar(self):
-        player.adicionar_dinheiro(-25000)
+        player.receber_dinheiro(-25000)
         player.aumemtar_max_aluguel(1)
         self.comprado = True
 
@@ -34,7 +34,7 @@ class Galinha:
         self.comprado = False
 
     def comprar(self):
-        player.adicionar_dinheiro(-25000)
+        player.receber_dinheiro(-25000)
         player.aumentar_comida(1000000000000000)
         self.comprado = True
 
@@ -43,7 +43,7 @@ class OutraGalinha:
         self.comprado = False
 
     def comprar(self):
-        player.adicionar_dinheiro(-25000)
+        player.receber_dinheiro(-25000)
         player.aumentar_max_comida(1000000000000000)
         self.comprado = True
 
@@ -52,7 +52,7 @@ class HorarioDeAlmoco:
         self.comprado = False
 
     def comprar(self):
-        player.adicionar_dinheiro(-2000)
+        player.receber_dinheiro(-2000)
         player.aumentar_max_comida(1)
         self.comprado = True
 
@@ -61,7 +61,7 @@ class ColetePuffer:
         self.comprado = False
 
     def comprar(self):
-        player.adicionar_dinheiro(-6000)
+        player.receber_dinheiro(-6000)
         player.aumentar_max_comida(1)
         player.aumemtar_max_aluguel(1)
         player.aumentar_max_remedio(1)
@@ -72,7 +72,7 @@ class GeladeiraPremium:
         self.comprado = False
 
     def comprar(self):
-        player.adicionar_dinheiro(-2000)
+        player.receber_dinheiro(-2000)
         player.aumentar_max_comida(1)
         self.comprado = True
 
@@ -81,7 +81,7 @@ class Cruz:
         self.comprado = False
 
     def comprar(self):
-        player.adicionar_dinheiro(-750)
+        player.receber_dinheiro(-750)
         player.aumentar_aluguel(1)
         player.aumentar_comida(1)
         player.aumentar_remdio(1)
@@ -92,7 +92,7 @@ class CarroEsportivo:
         self.comprado = False
 
     def comprar(self):
-        player.adicionar_dinheiro(-100000)
+        player.receber_dinheiro(-100000)
         self.comprado = True
 
 class FaturamentoAbsurdo:
@@ -100,7 +100,7 @@ class FaturamentoAbsurdo:
         self.comprado = False
 
     def comprar(self):
-        player.adicionar_dinheiro(-2000)
+        player.receber_dinheiro(-2000)
         player.aumentar_comida(1)
         self.comprado = True
 
@@ -109,7 +109,7 @@ class CasaPorpia:
         self.comprado = False
 
     def comprar(self):
-        player.adicionar_dinheiro(-25000)
+        player.receber_dinheiro(-25000)
         player.aumemtar_max_aluguel(1000000000000000)
         self.comprado = True
 
@@ -118,7 +118,7 @@ class Omega3:
         self.comprado = False
 
     def comprar(self):
-        player.adicionar_dinheiro(-2000)
+        player.receber_dinheiro(-2000)
         player.aumentar_max_remedio(1)
         self.comprado = True
 
@@ -127,7 +127,7 @@ class Sus:
         self.comprado = False
 
     def comprar(self):
-        player.adicionar_dinheiro(-25000)
+        player.receber_dinheiro(-25000)
         player.aumentar_max_remedio(100000000000000)
         self.comprado = True
 
@@ -136,7 +136,7 @@ class PromocaoTrabalho:
         self.comprado = False
 
     def comprar(self):
-        player.adicionar_dinheiro(-4000)
+        player.receber_dinheiro(-4000)
         player.aumentar_max_remedio(1)
         player.aumentar_max_comida(1)
         self.comprado = True
@@ -146,7 +146,7 @@ class Folga:
         self.comprado = False
 
     def comprar(self):
-        player.adicionar_dinheiro(-2000)
+        player.receber_dinheiro(-2000)
         player.aumentar_max_remedio(1)
         self.comprado = True
 
@@ -155,7 +155,7 @@ class ParteBoaCidade:
         self.comprado = False
 
     def comprar(self):
-        player.adicionar_dinheiro(-2000)
+        player.receber_dinheiro(-2000)
         player.aumemtar_max_aluguel(1)
         self.comprado = True
 
@@ -164,5 +164,5 @@ class Videogame:
         self.comprado = False
 
     def comprar(self):
-        player.adicionar_dinheiro(-1500)
+        player.receber_dinheiro(-1500)
         self.comprado = True
