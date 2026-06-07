@@ -265,7 +265,7 @@ pip install PyQt5
 ## Executar o jogo
 
 ```bash
-python main.py
+python must_earn_gui.py
 ```
 
 ---
