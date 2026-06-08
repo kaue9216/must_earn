@@ -2,7 +2,7 @@ class Player:
     def __init__(self):
         # ATRIBUTOS DO PLAYER
         self.nome = ""
-        self.dinheiro = 1500000
+        self.dinheiro = 1500
         self.aluguel = 5
         self.max_aluguel = 5
         self.comida = 5
