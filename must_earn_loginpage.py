@@ -11,6 +11,9 @@ from PyQt5.QtWidgets import (
 from PyQt5.QtGui import  QPixmap
 from PyQt5.QtCore import Qt
 
+from PyQt5.QtWidgets import QGraphicsDropShadowEffect
+from PyQt5.QtGui import QColor
+
 
 class MustEarn(QWidget):
     def __init__(self):
@@ -29,8 +32,19 @@ class MustEarn(QWidget):
         titulo.setAlignment(Qt.AlignCenter)
 
         titulo.setStyleSheet("""
-            margin-top: 30px;
+        color: #2DE2E6;
+        font-size: 56px;
+        font-weight: 900;
+        margin-top: 30px;
+        letter-spacing: 4px;
         """)
+
+        sombra = QGraphicsDropShadowEffect()
+        sombra.setBlurRadius(35)
+        sombra.setOffset(0)
+        sombra.setColor(QColor("#2DE2E6"))
+
+        titulo.setGraphicsEffect(sombra)
 
         layout.addWidget(titulo)
 
@@ -84,6 +98,57 @@ class MustEarn(QWidget):
 
 
         layout.addWidget(self.botao, alignment=Qt.AlignCenter)
+
+        texto.setStyleSheet("""
+    color: #39FF88;
+    font-size: 20px;
+    font-weight: bold;
+""")
+
+        self.usuario.setStyleSheet("""
+    QLineEdit {
+        background-color: #071014;
+        color: #39FF88;
+        border: 2px solid #2DE2E6;
+        border-radius: 10px;
+        padding-left: 20px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    QLineEdit:focus {
+        border: 2px solid #39FF88;
+    }
+""")
+
+        self.botao.setStyleSheet("""
+    QPushButton {
+        background-color: #071014;
+        color: #39FF88;
+        border: 2px solid #39FF88;
+        border-radius: 10px;
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    QPushButton:hover {
+        background-color: #39FF88;
+        color: black;
+    }
+
+    QPushButton:pressed {
+        background-color: #2DE2E6;
+        color: black;
+    }
+""")
+
+        self.setStyleSheet("""
+    QWidget {
+        background-color: #020406;
+        color: #2DE2E6;
+        font-family: Consolas;
+    }
+""")
 
         self.setLayout(layout)
 
