@@ -2,7 +2,7 @@ class Player:
     def __init__(self):
         # ATRIBUTOS DO PLAYER
         self.nome = ""
-        self.dinheiro = 1500
+        self.dinheiro = 1500000
         self.aluguel = 5
         self.max_aluguel = 5
         self.comida = 5
@@ -52,6 +52,25 @@ class Player:
             except TypeError:
                 print("Valor Máximo Aluguel: Infinito")
 
+    
+    def texto_status_aluguel(self):
+        try:
+            ponto_aluguel = []
+            for i in range(1, self.max_aluguel + 1):
+                if i <= self.aluguel:
+                    ponto_aluguel.append("🟩")
+                else:
+                    ponto_aluguel.append("⬛")
+            
+            pontos = ""
+            for p in ponto_aluguel:
+                pontos += p
+            return pontos
+        except TypeError:
+            return "Infinito"
+            
+            
+
 #Funcao Comida
     def aumentar_comida(self):  # Aumenta a comida quando comprado
         try:    
@@ -86,6 +105,24 @@ class Player:
             except TypeError:
                 print("Valor Máximo comida: Infinito")
 
+
+    def texto_status_comida(self):
+        try:
+            ponto_comida = []
+            for i in range(1, self.max_comida + 1):
+                if i <= self.comida:
+                    ponto_comida.append("🟩")
+                else:
+                    ponto_comida.append("⬛")
+            
+            pontos = ""
+            for p in ponto_comida:
+                pontos += p
+            return pontos
+        except TypeError:
+            return "Infinito"
+
+
 #Funcao Remedio
     def aumentar_remedio(self): # Aumenta o remedio quando comprado
         try:    
@@ -119,6 +156,23 @@ class Player:
                 self.max_remedio += valor
             except TypeError:
                 print("Valor Máximo remedio: Infinito")
+
+    def texto_status_remedio(self):
+        try:
+            ponto_remedio = []
+            for i in range(1, self.max_remedio + 1):
+                if i <= self.remedio:
+                    ponto_remedio.append("🟩")
+                else:
+                    ponto_remedio.append("⬛")
+            
+            pontos = ""
+            for p in ponto_remedio:
+                pontos += p
+            return pontos
+        except TypeError:
+            return "Infinito"
+
 
 #Funcao Dinheiro
     # Pega o investimento inicial, e o valor que rendeu

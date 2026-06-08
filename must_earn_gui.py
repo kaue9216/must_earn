@@ -208,9 +208,9 @@ class GastosDiarios(QDialog):
         super().__init__()
 
 
-        self.comida_status = QLabel(f"Comida: {player.comida}", self)
-        self.remedio_status = QLabel(f"Remédio: {player.remedio}", self)
-        self.aluguel_status = QLabel(f"Aluguel: {player.aluguel}", self)
+        self.comida_status = QLabel(f"Comida: {player.texto_status_comida()}", self)
+        self.remedio_status = QLabel(f"Remédio: {player.texto_status_remedio()}", self)
+        self.aluguel_status = QLabel(f"Aluguel: {player.texto_status_aluguel()}", self)
         self.saldo_status = QLabel(f"Saldo: R${player.dinheiro:.2f}", self)
 
         self.comida_txt = QLabel("COMIDA")
@@ -423,9 +423,9 @@ font-weight: bold;
 
 
     def atualizar_status(self): # ATUALIZA OS STATUS SEMPRE QUE ALGUM ATRIBUTO É COMPRADO
-        self.comida_status.setText(f"Comida: {str(player.comida)}/{str(player.max_comida)}")
-        self.remedio_status.setText(f"Remédio: {str(player.remedio)}/{str(player.max_remedio)}")
-        self.aluguel_status.setText(f"Aluguel: {str(player.aluguel)}/{str(player.max_aluguel)}")
+        self.comida_status.setText(f"Comida: {player.texto_status_comida()}")
+        self.remedio_status.setText(f"Remédio: {str(player.texto_status_remedio())}")
+        self.aluguel_status.setText(f"Aluguel: {str(player.texto_status_aluguel())}")
         
         self.saldo_status.setText(f"Saldo: R${str(round(player.dinheiro, 2))}")
         
@@ -665,9 +665,9 @@ class MustEarn(QWidget):
         self.username = QLabel(f"Nome: {player.nome}")
 
 
-        self.comida = QLabel(f"Comida: {player.comida}/{str(player.max_comida)}", self)
-        self.remedio = QLabel(f"Remédio: {player.remedio}/{str(player.max_remedio)}", self)
-        self.aluguel = QLabel(f"Aluguel: {player.aluguel}/{str(player.max_aluguel)}", self)
+        self.comida = QLabel(f"Comida: {player.texto_status_comida()}", self)
+        self.remedio = QLabel(f"Remédio: {player.texto_status_remedio()}", self)
+        self.aluguel = QLabel(f"Aluguel: {player.texto_status_aluguel()}", self)
         self.saldo = QLabel(f"Saldo: R${player.dinheiro:.2f}", self)
 
 
@@ -996,9 +996,9 @@ QPushButton:pressed {
 
 
     def atualizar_status(self): # FUNCAO PARA ATUALIZAR OS DADOS TODA RODADA
-        self.comida.setText(f"Comida: {str(player.comida)}/{str(player.max_comida)}")
-        self.remedio.setText(f"Remédio: {str(player.remedio)}/{str(player.max_remedio)}")
-        self.aluguel.setText(f"Aluguel: {str(player.aluguel)}/{str(player.max_aluguel)}")
+        self.comida.setText(f"Comida: {player.texto_status_comida()}")
+        self.remedio.setText(f"Remédio: {str(player.texto_status_remedio())}")
+        self.aluguel.setText(f"Aluguel: {str(player.texto_status_aluguel())}")
         self.saldo.setText(f"Saldo: R${str(round(player.dinheiro, 2))}")
 
     def abrir_loja(self): #ABRE A LOJA DE POWERUPS
