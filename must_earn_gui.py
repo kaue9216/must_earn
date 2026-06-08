@@ -203,6 +203,105 @@ QPushButton:pressed {
             self.erro_texto.setText("Você deve inserir um nome de usuário")
 
 
+class Ranking(QDialog):
+    def __init__(self):
+        super().__init__()
+
+        self.logo = QLabel()
+        self.titulo = QLabel("Ranking")
+        self.texto_ranking = QTextEdit()
+        self.texto_ranking.setReadOnly(True)
+        self.texto_ranking.setFontPointSize(16)
+        self.botao_fechar = QPushButton("Fechar")
+
+        self.initUi()
+
+    
+    def initUi(self):
+        self.setWindowTitle("MUST EARN")
+        self.setFixedSize(900, 850)
+
+        self.setStyleSheet("""
+QDialog {
+    background-color: #020406;
+    font-family: Consolas;
+}
+
+QLabel {
+    color: #2DE2E6;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+QTextEdit {
+    background-color: #071014;
+    color: #D6F5FF;
+    border: 2px solid #2DE2E6;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+QPushButton {
+    background-color: #071014;
+    color: #39FF88;
+    border: 2px solid #39FF88;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #39FF88;
+    color: black;
+}
+
+QPushButton:pressed {
+    background-color: #2DE2E6;
+    color: black;
+}
+""")
+
+        vbox = QVBoxLayout()
+
+        pixmap_logo = QPixmap("./must_earn_logo_2.png")
+        pixmap_logo = pixmap_logo.scaled(
+            260,
+            120,
+            Qt.KeepAspectRatio,
+            Qt.SmoothTransformation
+        )
+        self.logo.setPixmap(pixmap_logo)
+        self.logo.setAlignment(Qt.AlignCenter)
+        vbox.addWidget(self.logo)
+
+
+        self.titulo.setAlignment(Qt.AlignCenter)
+        vbox.addWidget(self.titulo)
+
+        vbox.addWidget(self.texto_ranking)
+
+        vbox.addWidget(self.botao_fechar, alignment=Qt.AlignCenter)
+
+        self.setLayout(vbox)
+
+
+        self.printar_ranking()
+
+        self.botao_fechar.clicked.connect(self.accept)
+
+
+
+    def printar_ranking(self):
+        with open("./relatorio.txt", "r", encoding="utf-8") as ranking:
+            conteudo_ranking = ranking.readlines()
+
+        for linha in conteudo_ranking:
+            self.texto_ranking.append(linha)
+        
+
+
+
 class GastosDiarios(QDialog):
     def __init__(self):
         super().__init__()
@@ -657,6 +756,7 @@ class MustEarn(QWidget):
         self.validacao = True
 
         self.loja = None
+        self.ranking = None
 
 
         # CRIACAO DOS BOTOES, TEXTOS, INPUTS, ETC
@@ -719,6 +819,8 @@ class MustEarn(QWidget):
 
 
         self.botao_loja = QPushButton("Loja", self)
+
+        self.botao_ranking = QPushButton("Ranking")
 
 
         self.initUi()
@@ -857,7 +959,10 @@ QPushButton:pressed {
         vbox.addWidget(self.botao_jogar)
 
 
-        vbox.addWidget(self.botao_loja)
+        hbox_botoes = QHBoxLayout()
+        hbox_botoes.addWidget(self.botao_loja)
+        hbox_botoes.addWidget(self.botao_ranking)
+        vbox.addLayout(hbox_botoes)
 
 
         self.setLayout(vbox)
@@ -873,6 +978,7 @@ QPushButton:pressed {
         #QUANDO CLICA O BOTAO RODA ESSA LINHA QUE CHAMA A FUNCAO INICIALIZAR_DADOS_ACOES()
         self.botao_jogar.clicked.connect(self.inicializar_dados_acoes)
         self.botao_loja.clicked.connect(self.abrir_loja)
+        self.botao_ranking.clicked.connect(self.abrir_ranking)
 
 
     def get_valores_investidos(self, acoes_valores: list):
@@ -1006,6 +1112,11 @@ QPushButton:pressed {
         self.loja.exec_()
         self.atualizar_status()
         self.checar_status()
+
+
+    def abrir_ranking(self):
+        self.ranking = Ranking()
+        self.ranking.exec_()
 
 
     def checar_status(self): #AO FINAL DE TODA RODADA CHECA OS STATUS

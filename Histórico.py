@@ -1,15 +1,21 @@
-def validar_nome_disponivel(nome):
+def validar_nome_disponivel(nome: str):
     with open("./jogadores.txt", "r", encoding="utf-8") as jogadores:
         conteudo_jogadores = jogadores.readlines()
+
     
-    jogadores = []
+    if not conteudo_jogadores:
+        return True
+
 
     for linha in conteudo_jogadores:
-        username, n_rodadas, lucro_total, ganhou = linha.split()
-        jogadores.append((username, n_rodadas, lucro_total, ganhou))
+        linha = linha.strip()
+        if not linha:
+            continue
+        if len(linha.split("/")) != 4:
+            continue
+        username, n_rodadas, lucro_total, ganhou = linha.split("/")
 
-    for j in jogadores:
-        if j[0] == nome:
+        if username == nome:
             return False
     return True
     
@@ -20,7 +26,7 @@ def gerar_relatorio(player_username, player_rodadas, player_lucro_total, player_
             player_ganhou = "Ganhou"
         else:
             player_ganhou = "Perdeu"
-        jogadores.write(f"{player_username} {player_rodadas} {player_lucro_total} {player_ganhou}\n")
+        jogadores.write(f"\n{player_username}/{player_rodadas}/{player_lucro_total}/{player_ganhou}\n")
 
     with open("./jogadores.txt", "r", encoding="utf-8") as jogadores:
         conteudo_jogadores = jogadores.readlines()
@@ -34,7 +40,12 @@ def gerar_relatorio(player_username, player_rodadas, player_lucro_total, player_
 
 
     for linha in conteudo_jogadores:
-        username, n_rodadas, lucro_total, ganhou = linha.split()
+        linha = linha.strip()
+        if not linha:
+            continue
+        if len(linha.split("/")) != 4:
+            continue
+        username, n_rodadas, lucro_total, ganhou = linha.split("/")
         jogadores.append((username, n_rodadas, lucro_total, ganhou))
 
 
@@ -61,4 +72,3 @@ def gerar_relatorio(player_username, player_rodadas, player_lucro_total, player_
         for p in perdedores:
             relatorio.write(f"\n{ranking_perdedores}º - {p[0]}:\n-Rodadas: {p[1]}\n-Lucro Total: R${float(p[2]):.2f}\n-{p[3]}\n")
             ranking_perdedores += 1
-

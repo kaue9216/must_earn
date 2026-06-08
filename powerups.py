@@ -853,5 +853,3 @@ font-weight: bold;
             return True
         else:
             return False
-
-
