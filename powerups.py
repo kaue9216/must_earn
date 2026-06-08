@@ -809,6 +809,8 @@ font-weight: bold;
 
         main_layout.addWidget(self.botao_fechar)
 
+        self.atualizar_saldo()
+
         self.macaco_digital_botao.clicked.connect(lambda: self.comprar_upgrade(i_upgrade=0, botao=self.macaco_digital_botao))
         self.alianca_botao.clicked.connect(lambda: self.comprar_upgrade(i_upgrade=1, botao=self.alianca_botao))
         self.kitnet_botao.clicked.connect(lambda: self.comprar_upgrade(i_upgrade=2, botao=self.kitnet_botao))
@@ -839,7 +841,7 @@ font-weight: bold;
         self.atualizar_saldo()
 
     def atualizar_saldo(self):
-        self.saldo.setText(f"Saldo: R${self.player.dinheiro}")
+        self.saldo.setText(f"Saldo: R${self.player.dinheiro:.2f}")
 
 
     def checar_comprados(self):

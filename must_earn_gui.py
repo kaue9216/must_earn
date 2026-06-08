@@ -7,10 +7,7 @@ import random
 import textos
 from player import Player
 import powerups
-
-
-from PyQt5.QtWidgets import QGraphicsDropShadowEffect
-from PyQt5.QtGui import QColor
+import Histórico
 
 
 class Login(QWidget):
@@ -18,7 +15,7 @@ class Login(QWidget):
         super().__init__()
 
 
-        self.titulo = QLabel("MUST EARN")
+        self.titulo = QLabel()
         self.fred_fl_img = QLabel()
         self.texto_login = QLabel("Insira o nome de usuário:")
         self.username = QLineEdit()
@@ -80,17 +77,20 @@ QTextEdit {
         vbox.setAlignment(Qt.AlignTop | Qt.AlignCenter)
         vbox.setSpacing(30)
 
+
+        pixmap_titulo = QPixmap("./must_earn_logo.jpeg")
+        pixmap_titulo = pixmap_titulo.scaled(
+            512,
+            288,
+            Qt.KeepAspectRatio,
+            Qt.SmoothTransformation   
+        )
+        self.titulo.setPixmap(pixmap_titulo)
+        self.titulo.setAlignment(Qt.AlignCenter)
         vbox.addWidget(self.titulo)
 
         self.titulo.setAlignment(Qt.AlignCenter)
 
-
-        sombra = QGraphicsDropShadowEffect()
-        sombra.setBlurRadius(30)
-        sombra.setColor(QColor("#00E5FF"))
-        sombra.setOffset(0)
-
-        self.titulo.setGraphicsEffect(sombra)
 
 
         pixmap = QPixmap("./must_earn.jpeg")
@@ -122,22 +122,6 @@ QTextEdit {
 
         self.setLayout(vbox)
 
-
-        self.titulo.setObjectName("titulo")
-
-        self.titulo.setStyleSheet("""
-color: #2DE2E6;
-font-size: 56px;
-font-weight: 900;
-letter-spacing: 4px;
-""")
-
-        sombra = QGraphicsDropShadowEffect()
-        sombra.setBlurRadius(35)
-        sombra.setOffset(0)
-        sombra.setColor(QColor("#2DE2E6"))
-
-        self.titulo.setGraphicsEffect(sombra)
 
         self.fred_fl_img.setObjectName("fred_fl_img")
         self.texto_login.setObjectName("texto_login")
@@ -195,7 +179,7 @@ QPushButton:pressed {
 """)
 
 
-    def checar_usuario(self):
+    def checar_usuario(self): # CHECA SE O USUARIO INSERIU UM USERNAME, SE SIM VAI PARA A TELA PRINCIPAL DO JOGO
         if self.username.text():
             player.nome = self.username.text()
             self.must_earn = MustEarn()
@@ -391,7 +375,7 @@ font-weight: bold;
 
         
     
-    def comprar_comida(self):
+    def comprar_comida(self): # CHECA SE O JOGADOR ESTA COM O STATUS NO MAXIMO OU SE NAO TEM DINHEIRO PARA COMPRAR, SE NAO COMPRA O STATUS
         if player.comida == player.max_comida:
             self.aviso.setText("Comida já está no maximo")
             return        
@@ -402,7 +386,7 @@ font-weight: bold;
         self.atualizar_status()
 
 
-    def comprar_remedio(self):
+    def comprar_remedio(self): # CHECA SE O JOGADOR ESTA COM O STATUS NO MAXIMO OU SE NAO TEM DINHEIRO PARA COMPRAR, SE NAO COMPRA O STATUS
         if player.remedio == player.max_remedio:
             self.aviso.setText("Remédio já está no maximo")
             return        
@@ -413,7 +397,7 @@ font-weight: bold;
         self.atualizar_status()
 
 
-    def comprar_aluguel(self):
+    def comprar_aluguel(self): # CHECA SE O JOGADOR ESTA COM O STATUS NO MAXIMO OU SE NAO TEM DINHEIRO PARA COMPRAR, SE NAO COMPRA O STATUS
         if player.aluguel == player.max_aluguel:
             self.aviso.setText("Aluguel já está no maximo")
             return
@@ -424,7 +408,7 @@ font-weight: bold;
         self.atualizar_status()
 
 
-    def atualizar_status(self):
+    def atualizar_status(self): # ATUALIZA OS STATUS SEMPRE QUE ALGUM ATRIBUTO É COMPRADO
         self.comida_status.setText(f"Comida: {str(player.comida)}/{str(player.max_comida)}")
         self.remedio_status.setText(f"Remédio: {str(player.remedio)}/{str(player.max_remedio)}")
         self.aluguel_status.setText(f"Aluguel: {str(player.aluguel)}/{str(player.max_aluguel)}")
@@ -441,7 +425,7 @@ class GameOver(QDialog):
         super().__init__()
         self.must_earn = must_earn
 
-        self.titulo = QLabel("MUST EARN")
+        self.titulo = QLabel()
         self.game_over_img = QLabel()
         self.botao_restart = QPushButton("Jogar de Novo")
         self.botao_sair = QPushButton("Sair")
@@ -482,23 +466,15 @@ QPushButton:pressed {
 """)
 
         # Título
-        self.titulo = QLabel("MUST EARN")
+        pixmap_titulo = QPixmap("./must_earn_logo.jpeg")
+        pixmap_titulo = pixmap_titulo.scaled(
+            512,
+            250,
+            Qt.KeepAspectRatio,
+            Qt.SmoothTransformation   
+        )
+        self.titulo.setPixmap(pixmap_titulo)
         self.titulo.setAlignment(Qt.AlignCenter)
-
-        self.titulo.setStyleSheet("""
-color: #FF3131;
-font-size: 72px;
-font-weight: 900;
-letter-spacing: 6px;
-margin-top: 20px;
-""")
-
-        sombra = QGraphicsDropShadowEffect()
-        sombra.setBlurRadius(50)
-        sombra.setOffset(0)
-        sombra.setColor(QColor("#FF3131"))
-
-        self.titulo.setGraphicsEffect(sombra)
 
 
         vbox = QVBoxLayout()
@@ -510,7 +486,7 @@ margin-top: 20px;
         pixmap_game_over = QPixmap("./must_earn_TelaDeDerrota.jpeg")
         pixmap_game_over = pixmap_game_over.scaled(
             650,
-            450,
+            500,
             Qt.KeepAspectRatio,
             Qt.SmoothTransformation
         )
@@ -538,7 +514,7 @@ margin-top: 20px;
         self.botao_sair.clicked.connect(self.sair_do_jogo)
 
 
-    def restart(self):
+    def restart(self): # RESETA OS STATUS DO PLAYER, FECHA A JANELA PRINCIPAL E REABRE A JANELA DE LOGIN
         player.reset()
         self.login = Login()
         self.login.show()
@@ -546,7 +522,7 @@ margin-top: 20px;
         self.accept()
 
 
-    def sair_do_jogo(self):
+    def sair_do_jogo(self): # FECHA O JOGO
         QApplication.quit()
 
 
@@ -600,28 +576,22 @@ QPushButton:pressed {
         vbox.setSpacing(30)
 
 
+        pixmap_titulo = QPixmap("./must_earn_logo.jpeg")
+        pixmap_titulo = pixmap_titulo.scaled(
+            512,
+            288,
+            Qt.KeepAspectRatio,
+            Qt.SmoothTransformation   
+        )
+        self.titulo.setPixmap(pixmap_titulo)
         self.titulo.setAlignment(Qt.AlignCenter)
-
-        self.titulo.setStyleSheet("""
-color: #FFD700;
-font-size: 56px;
-font-weight: 900;
-letter-spacing: 4px;
-""")
-
-        sombra = QGraphicsDropShadowEffect()
-        sombra.setBlurRadius(35)
-        sombra.setOffset(0)
-        sombra.setColor(QColor("#FFD700"))
-
-        self.titulo.setGraphicsEffect(sombra)
 
         vbox.addWidget(self.titulo)
 
         pixmap_tela_vitoria = QPixmap("./must_earn_TelaDaVitoria.jpeg")
         pixmap_tela_vitoria = pixmap_tela_vitoria.scaled(
             650,
-            450,
+            480,
             Qt.KeepAspectRatio,
             Qt.SmoothTransformation
         )
@@ -652,7 +622,7 @@ letter-spacing: 4px;
 
 
 
-    def restart(self):
+    def restart(self): # RESETA OS STATUS DO PLAYER, FECHA A JANELA PRINCIPAL E REABRE A JANELA DE LOGIN
         player.reset()
         self.login = Login()
         self.login.show()
@@ -660,7 +630,7 @@ letter-spacing: 4px;
         self.accept()
 
 
-    def sair_do_jogo(self):
+    def sair_do_jogo(self): # FECHA O JOGO
         QApplication.quit()
 
 
@@ -668,10 +638,11 @@ class MustEarn(QWidget):
     def __init__(self):
         super().__init__()
 
+        # CRIA A LISTA DOS CENARIOS, VALIDAÇÃO E A LOJA QUE SERA USADA NO CODIGO
         self.lista_cenarios = [1, 2, 3, 4, 5, 6, 7, 8]
         self.validacao = True
-        self.loja = powerups.Loja(player)
 
+        self.loja = None
 
 
         # CRIACAO DOS BOTOES, TEXTOS, INPUTS, ETC
@@ -794,6 +765,22 @@ QPushButton:pressed {
 
         vbox = QVBoxLayout()
 
+
+        pixmap_titulo = QPixmap("./must_earn_logo_2.png")
+        pixmap_titulo = pixmap_titulo.scaled(
+            260,
+            120,
+            Qt.KeepAspectRatio,
+            Qt.SmoothTransformation   
+        )
+        self.titulo.setPixmap(pixmap_titulo)
+        self.titulo.setAlignment(Qt.AlignCenter)
+        self.titulo.setStyleSheet("""
+            background: transparent;
+            border: none;
+            padding: 0px;
+            margin: 0px;
+        """)
 
         vbox.addWidget(self.titulo)
 
@@ -957,6 +944,8 @@ QPushButton:pressed {
         self.gastos_diarios = GastosDiarios()
         self.gastos_diarios.exec_()
 
+        player.aumentar_rodada()
+
         self.jornal.append("Fim do Dia! Você recebe sua diária de R$1000.00")
         player.receber_dinheiro(1000)
 
@@ -964,6 +953,8 @@ QPushButton:pressed {
         self.atualizar_status()
 
         self.checar_status()
+
+        self.limpar_investimentos()
 
         # Função que chama o histórico na main (Não consegui testar)
         #historico.registrar_dia(player)
@@ -979,6 +970,7 @@ QPushButton:pressed {
         texto_do_cenario = random.choice(textos.cenarios[cenario_sorteado])
         print(random.choice(textos.cenarios[cenario_sorteado]))
 
+        # MOSTRA O CENARIO NO JORNAL
         self.jornal.append("=" * 30)
         self.jornal.append(f"NOTÍCIA DO CENÁRIO SORTEADO (Cenário {cenario_sorteado}):")
         self.jornal.append("=" * 30)
@@ -989,32 +981,37 @@ QPushButton:pressed {
         return
 
 
-    def atualizar_status(self):
+    def atualizar_status(self): # FUNCAO PARA ATUALIZAR OS DADOS TODA RODADA
         self.comida.setText(f"Comida: {str(player.comida)}/{str(player.max_comida)}")
         self.remedio.setText(f"Remédio: {str(player.remedio)}/{str(player.max_remedio)}")
         self.aluguel.setText(f"Aluguel: {str(player.aluguel)}/{str(player.max_aluguel)}")
         self.saldo.setText(f"Saldo: R${str(round(player.dinheiro, 2))}")
 
-    def abrir_loja(self):
+    def abrir_loja(self): #ABRE A LOJA DE POWERUPS
+        self.loja = powerups.Loja(player)
         self.loja.exec_()
         self.atualizar_status()
         self.checar_status()
 
 
-    def checar_status(self):
+    def checar_status(self): #AO FINAL DE TODA RODADA CHECA OS STATUS
+        # 1. CHECA SE OS STATUS ESTAO ZERADOS, SE SIM PERDE O JOGO E ABRE TELA DE GAME OVER
         if player.comida == 0 or player.aluguel == 0 or player.remedio == 0:
+            Histórico.gerar_relatorio(player.nome, player.rodadas, player.lucro_total_partida, False)
             self.game_over = GameOver(self)
             self.game_over.exec_()
             self.close()
-        elif player.dinheiro <= 0:
-            self.game_over = GameOver(self)
-            self.game_over.exec_()
-            self.close()
-        else:
-            if self.loja.checar_comprados():
+        else: # CHECA SE O PLAYER COMPROU TODOS OS UPGRADES, SE SIM GANHA O JOGO E ABRE TELA DE VITORIA
+            if self.loja and self.loja.checar_comprados():
+                Histórico.gerar_relatorio(player.nome, player.rodadas, player.lucro_total_partida, True)
                 self.tela_vitoria = TelaDaVitoria(self)
                 self.tela_vitoria.exec_()
                 self.close()
+
+    
+    def limpar_investimentos(self): # AO FIM DA RODADA LIMPA OS INVESTIMENTOS ANTERIORES
+        for acao in self.acoes_valores:
+            acao.setText("0.00")
         
 
 
