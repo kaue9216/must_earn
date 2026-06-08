@@ -6,7 +6,7 @@
 
 * Diego Woellner
 * Gabriel Dudeck
-* Heitor Rechi
+* Heitor Rebechi
 * Kauê Ogibowski
 * Leonardo Alquate
 
