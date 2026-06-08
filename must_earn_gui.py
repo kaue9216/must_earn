@@ -6,7 +6,7 @@ import acoesv2
 import random
 import textos
 from player import Player
-import Histórico as historico
+import powerups
 
 
 
@@ -101,6 +101,7 @@ class GastosDiarios(QDialog):
     def __init__(self):
         super().__init__()
 
+
         self.comida_status = QLabel(f"Comida: {player.comida}", self)
         self.remedio_status = QLabel(f"Remédio: {player.remedio}", self)
         self.aluguel_status = QLabel(f"Aluguel: {player.aluguel}", self)
@@ -108,15 +109,15 @@ class GastosDiarios(QDialog):
 
         self.comida_txt = QLabel("COMIDA")
         self.comida_img = QLabel()
-        self.comida_botao = QPushButton("Comprar")
+        self.comida_botao = QPushButton(f"Comprar R${str(player.preco_comida)}")
 
         self.remedio_txt = QLabel("REMÉDIO")
         self.remedio_img = QLabel()
-        self.remedio_botao = QPushButton("Comprar")
+        self.remedio_botao = QPushButton(f"Comprar R${str(player.preco_remedio)}")
 
         self.aluguel_txt = QLabel("ALUGUEL")
         self.aluguel_img = QLabel()
-        self.aluguel_botao = QPushButton("Comprar")
+        self.aluguel_botao = QPushButton(f"Comprar R${player.preco_aluguel}")
 
         self.aviso = QLabel("")
 
@@ -127,7 +128,7 @@ class GastosDiarios(QDialog):
 
     def initUi(self):
         self.setWindowTitle("MUST EARN")
-        self.setFixedSize(400, 350)
+        self.setFixedSize(850, 450)
 
 
         vbox = QVBoxLayout()
@@ -150,22 +151,46 @@ class GastosDiarios(QDialog):
 
 
         vbox_comida = QVBoxLayout()
-        vbox_comida.addWidget(self.comida_txt)
+        vbox_comida.addWidget(self.comida_txt, alignment=Qt.AlignCenter)
         vbox_comida.addWidget(self.comida_img)
+        pixmap_comida = QPixmap("./must_earn_comida.jpeg")
+        pixmap_comida = pixmap_comida.scaled(
+            300,
+            400,
+            Qt.KeepAspectRatio,
+            Qt.SmoothTransformation
+        )
+        self.comida_img.setPixmap(pixmap_comida)
         vbox_comida.addWidget(self.comida_botao)
         vbox_comida.setAlignment(Qt.AlignCenter)
         hbox_opcoes.addLayout(vbox_comida)
 
         vbox_remedio = QVBoxLayout()
-        vbox_remedio.addWidget(self.remedio_txt)
+        vbox_remedio.addWidget(self.remedio_txt, alignment=Qt.AlignCenter)
         vbox_remedio.addWidget(self.remedio_img)
+        pixmap_remedio = QPixmap("./must_earn_remedio.jpeg")
+        pixmap_remedio = pixmap_remedio.scaled(
+            300,
+            400,
+            Qt.KeepAspectRatio,
+            Qt.SmoothTransformation
+        )
+        self.remedio_img.setPixmap(pixmap_remedio)
         vbox_remedio.addWidget(self.remedio_botao)
         vbox_remedio.setAlignment(Qt.AlignCenter)
         hbox_opcoes.addLayout(vbox_remedio)
 
         vbox_aluguel = QVBoxLayout()
-        vbox_aluguel.addWidget(self.aluguel_txt)
+        vbox_aluguel.addWidget(self.aluguel_txt, alignment=Qt.AlignCenter)
         vbox_aluguel.addWidget(self.aluguel_img)
+        pixmap_aluguel = QPixmap("./must_earn_aluguel.jpeg")
+        pixmap_aluguel = pixmap_aluguel.scaled(
+            300,
+            400,
+            Qt.KeepAspectRatio,
+            Qt.SmoothTransformation
+        )
+        self.aluguel_img.setPixmap(pixmap_aluguel)
         vbox_aluguel.addWidget(self.aluguel_botao)
         vbox_aluguel.setAlignment(Qt.AlignCenter)
         hbox_opcoes.addLayout(vbox_aluguel)
@@ -180,6 +205,8 @@ class GastosDiarios(QDialog):
 
         self.setLayout(vbox)
 
+        self.atualizar_status()
+
         self.comida_botao.clicked.connect(self.comprar_comida)
         self.remedio_botao.clicked.connect(self.comprar_remedio)
         self.aluguel_botao.clicked.connect(self.comprar_aluguel)
@@ -188,11 +215,13 @@ class GastosDiarios(QDialog):
 
 
 
+        
+    
     def comprar_comida(self):
         if player.comida == player.max_comida:
             self.aviso.setText("Comida já está no maximo")
-            return
-        if player.dinheiro < 400:
+            return        
+        if player.dinheiro < player.preco_comida:
             self.aviso.setText("Saldo Insuficiente")
             return
         player.aumentar_comida()
@@ -202,8 +231,8 @@ class GastosDiarios(QDialog):
     def comprar_remedio(self):
         if player.remedio == player.max_remedio:
             self.aviso.setText("Remédio já está no maximo")
-            return
-        if player.dinheiro < 400:
+            return        
+        if player.dinheiro < player.preco_remedio:
             self.aviso.setText("Saldo Insuficiente")
             return
         player.aumentar_remedio()
@@ -214,7 +243,7 @@ class GastosDiarios(QDialog):
         if player.aluguel == player.max_aluguel:
             self.aviso.setText("Aluguel já está no maximo")
             return
-        if player.dinheiro < 400:
+        if player.dinheiro < player.preco_aluguel:
             self.aviso.setText("Saldo Insuficiente")
             return
         player.aumentar_aluguel()
@@ -222,10 +251,15 @@ class GastosDiarios(QDialog):
 
 
     def atualizar_status(self):
-        self.comida_status.setText(f"Comida: {str(player.comida)}")
-        self.remedio_status.setText(f"Remédio: {str(player.remedio)}")
-        self.aluguel_status.setText(f"Aluguel: {str(player.aluguel)}")
+        self.comida_status.setText(f"Comida: {str(player.comida)}/{str(player.max_comida)}")
+        self.remedio_status.setText(f"Remédio: {str(player.remedio)}/{str(player.max_remedio)}")
+        self.aluguel_status.setText(f"Aluguel: {str(player.aluguel)}/{str(player.max_aluguel)}")
+        
         self.saldo_status.setText(f"Saldo: R${str(round(player.dinheiro, 2))}")
+        
+        self.comida_botao.setText(f"Comprar R${player.preco_comida}")
+        self.remedio_botao.setText(f"Comprar R${player.preco_remedio}")
+        self.aluguel_botao.setText(f"Comprar R${player.preco_aluguel}")
 
 
 class GameOver(QDialog):
@@ -374,6 +408,7 @@ class MustEarn(QWidget):
 
         self.lista_cenarios = [1, 2, 3, 4, 5, 6, 7, 8]
         self.validacao = True
+        self.loja = powerups.Loja(player)
 
 
 
@@ -383,10 +418,10 @@ class MustEarn(QWidget):
         self.username = QLabel(f"Nome: {player.nome}")
 
 
-        self.comida = QLabel(f"Comida: {player.comida}", self)
-        self.remedio = QLabel(f"Remédio: {player.remedio}", self)
-        self.aluguel = QLabel(f"Aluguel: {player.aluguel}", self)
-        self.saldo = QLabel(f"Saldo: R${player.dinheiro}", self)
+        self.comida = QLabel(f"Comida: {player.comida}/{str(player.max_comida)}", self)
+        self.remedio = QLabel(f"Remédio: {player.remedio}/{str(player.max_remedio)}", self)
+        self.aluguel = QLabel(f"Aluguel: {player.aluguel}/{str(player.max_aluguel)}", self)
+        self.saldo = QLabel(f"Saldo: R${player.dinheiro:.2f}", self)
 
 
         self.jornal = QTextEdit(self)
@@ -446,7 +481,7 @@ class MustEarn(QWidget):
     def initUi(self):
         #CRIACAO DO LAYOUT DA INTERFACE
         self.setWindowTitle("MUST EARN")
-        self.setFixedSize(450, 550)
+        self.setFixedSize(450, 750)
 
 
         vbox = QVBoxLayout()
@@ -528,6 +563,7 @@ class MustEarn(QWidget):
 
         #QUANDO CLICA O BOTAO RODA ESSA LINHA QUE CHAMA A FUNCAO INICIALIZAR_DADOS_ACOES()
         self.botao_jogar.clicked.connect(self.inicializar_dados_acoes)
+        self.botao_loja.clicked.connect(self.abrir_loja)
 
 
     def get_valores_investidos(self, acoes_valores: list):
@@ -619,10 +655,7 @@ class MustEarn(QWidget):
 
         self.atualizar_status()
 
-        status_validos = self.checar_status()
-
-        if not status_validos:
-            pass
+        self.checar_status()
 
         # Função que chama o histórico na main (Não consegui testar)
         historico.registrar_dia(player)
@@ -635,7 +668,8 @@ class MustEarn(QWidget):
         cenario_sorteado = self.lista_cenarios.index(escolha_cenario) + 1
 
         # 2. Puxa o texto correspondente do arquivo textos.py usando o id do cenário
-        texto_do_cenario = textos.cenarios.get(cenario_sorteado)
+        texto_do_cenario = random.choice(textos.cenarios[cenario_sorteado])
+        print(random.choice(textos.cenarios[cenario_sorteado]))
 
         self.jornal.append("=" * 30)
         self.jornal.append(f"NOTÍCIA DO CENÁRIO SORTEADO (Cenário {cenario_sorteado}):")
@@ -648,10 +682,15 @@ class MustEarn(QWidget):
 
 
     def atualizar_status(self):
-        self.comida.setText(f"Comida: {str(player.comida)}")
-        self.remedio.setText(f"Remédio: {str(player.remedio)}")
-        self.aluguel.setText(f"Aluguel: {str(player.aluguel)}")
+        self.comida.setText(f"Comida: {str(player.comida)}/{str(player.max_comida)}")
+        self.remedio.setText(f"Remédio: {str(player.remedio)}/{str(player.max_remedio)}")
+        self.aluguel.setText(f"Aluguel: {str(player.aluguel)}/{str(player.max_aluguel)}")
         self.saldo.setText(f"Saldo: R${str(round(player.dinheiro, 2))}")
+
+    def abrir_loja(self):
+        self.loja.exec_()
+        self.atualizar_status()
+        self.checar_status()
 
 
     def checar_status(self):
@@ -659,11 +698,16 @@ class MustEarn(QWidget):
             self.game_over = GameOver(self)
             self.game_over.exec_()
             self.close()
-            return False
         elif player.dinheiro <= 0:
-            return False
+            self.game_over = GameOver(self)
+            self.game_over.exec_()
+            self.close()
         else:
-            return True
+            if self.loja.checar_comprados():
+                self.tela_vitoria = TelaDaVitoria(self)
+                self.tela_vitoria.exec_()
+                self.close()
+        
 
 
 player = Player()
