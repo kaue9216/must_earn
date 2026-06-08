@@ -9,6 +9,9 @@ from player import Player
 import powerups
 import Histórico
 
+from PyQt5.QtWidgets import QGraphicsDropShadowEffect
+from PyQt5.QtGui import QColor
+
 
 class Login(QWidget):
     def __init__(self):
@@ -77,6 +80,7 @@ QTextEdit {
         vbox.setAlignment(Qt.AlignTop | Qt.AlignCenter)
         vbox.setSpacing(30)
 
+        vbox.addWidget(self.titulo)
 
         pixmap_titulo = QPixmap("./must_earn_logo.jpeg")
         pixmap_titulo = pixmap_titulo.scaled(
@@ -87,7 +91,14 @@ QTextEdit {
         )
         self.titulo.setPixmap(pixmap_titulo)
         self.titulo.setAlignment(Qt.AlignCenter)
-        vbox.addWidget(self.titulo)
+
+
+        sombra = QGraphicsDropShadowEffect()
+        sombra.setBlurRadius(30)
+        sombra.setColor(QColor("#00E5FF"))
+        sombra.setOffset(0)
+
+        self.titulo.setGraphicsEffect(sombra)
 
         self.titulo.setAlignment(Qt.AlignCenter)
 
@@ -643,6 +654,7 @@ class MustEarn(QWidget):
         self.validacao = True
 
         self.loja = None
+
 
 
         # CRIACAO DOS BOTOES, TEXTOS, INPUTS, ETC
