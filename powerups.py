@@ -2,6 +2,9 @@ from PyQt5.QtWidgets import QWidget, QLabel, QPushButton, QVBoxLayout, QHBoxLayo
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtCore import Qt
 
+from PyQt5.QtWidgets import QGraphicsDropShadowEffect
+from PyQt5.QtGui import QColor
+
 class MacacoDigital:
     def __init__(self, player):
         self.comprado = False
@@ -348,12 +351,85 @@ class Loja(QDialog):
         self.setWindowTitle("MUST EARN")
         self.setFixedSize(950, 850)
 
+        self.setStyleSheet("""
+QDialog {
+    background-color: #020406;
+}
+
+QWidget {
+    background-color: #020406;
+    color: #2DE2E6;
+    font-family: Consolas;
+}
+
+QLabel {
+    color: #39FF88;
+    font-size: 14px;
+}
+
+QPushButton {
+    background-color: #071014;
+    color: #39FF88;
+    border: 2px solid #39FF88;
+    border-radius: 10px;
+    padding: 8px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #39FF88;
+    color: black;
+}
+
+QPushButton:pressed {
+    background-color: #2DE2E6;
+    color: black;
+}
+
+QScrollArea {
+    border: none;
+    background-color: #020406;
+}
+
+QScrollBar:vertical {
+    background: #071014;
+    width: 12px;
+}
+
+QScrollBar::handle:vertical {
+    background: #39FF88;
+    border-radius: 6px;
+}
+""")
+
         main_layout = QVBoxLayout()
         self.setLayout(main_layout)
 
         main_layout.addWidget(self.titulo)
+
+        self.titulo.setStyleSheet("""
+color: #2DE2E6;
+font-size: 42px;
+font-weight: 900;
+letter-spacing: 3px;
+""")
+
+        self.titulo.setAlignment(Qt.AlignCenter)    
+
+        sombra = QGraphicsDropShadowEffect()
+        sombra.setBlurRadius(35)
+        sombra.setOffset(0)
+        sombra.setColor(QColor("#2DE2E6"))
+
+        self.titulo.setGraphicsEffect(sombra)
+
         main_layout.addWidget(self.saldo)
 
+        self.saldo.setStyleSheet("""
+color: #2DE2E6;
+font-size: 18px;
+font-weight: bold;
+""")
 
         scroll = QScrollArea()
         scroll.setWidgetResizable(True)

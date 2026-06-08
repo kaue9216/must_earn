@@ -9,6 +9,8 @@ from PyQt5.QtWidgets import(
 
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QGraphicsDropShadowEffect
+from PyQt5.QtGui import QColor
 
 class TeladaVitoria(QWidget):
     def __init__(self):
@@ -18,18 +20,60 @@ class TeladaVitoria(QWidget):
         self.setWindowTitle("MUST EARN")
         self.setFixedSize(900, 850)
 
+        self.setStyleSheet("""
+QWidget {
+    background-color: #020406;
+    color: #39FF88;
+    font-family: Consolas;
+}
+
+QPushButton {
+    background-color: #071014;
+    color: #39FF88;
+    border: 2px solid #39FF88;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #39FF88;
+    color: black;
+}
+
+QPushButton:pressed {
+    background-color: #FFD700;
+    color: black;
+}
+
+QLabel {
+    color: #39FF88;
+}
+""")
         #Layout
         layout = QVBoxLayout()
         layout.setAlignment(Qt.AlignTop | Qt.AlignHCenter)
         layout.setSpacing(30)
 
         # Titulo
-        titulo = QLabel("MUST EARN")
+        titulo = QLabel("MUST EARN")    
         titulo.setAlignment(Qt.AlignCenter)
 
         titulo.setStyleSheet("""
-            margin-top: 30px;
-        """)
+color: #FFD700;
+font-size: 56px;
+font-weight: 900;
+letter-spacing: 4px;
+margin-top: 20px;
+""")
+
+        sombra = QGraphicsDropShadowEffect()
+        sombra.setBlurRadius(40)
+        sombra.setOffset(0)
+        sombra.setColor(QColor("#FFD700"))
+
+        titulo.setGraphicsEffect(sombra)
 
         layout.addWidget(titulo)
 
