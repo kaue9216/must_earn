@@ -1025,6 +1025,7 @@ QPushButton:pressed {
     
     def limpar_investimentos(self): # AO FIM DA RODADA LIMPA OS INVESTIMENTOS ANTERIORES
         for acao in self.acoes_valores:
+            acao.clear()
             acao.setPlaceholderText("0.00")
         
 
