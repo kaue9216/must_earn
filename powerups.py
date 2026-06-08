@@ -1,4 +1,3 @@
-
 from PyQt5.QtWidgets import QWidget, QLabel, QPushButton, QVBoxLayout, QHBoxLayout, QDialog, QScrollArea
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtCore import Qt
