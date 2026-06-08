@@ -1,3 +1,19 @@
+def validar_nome_disponivel(nome):
+    with open("./jogadores.txt", "r", encoding="utf-8") as jogadores:
+        conteudo_jogadores = jogadores.readlines()
+    
+    jogadores = []
+
+    for linha in conteudo_jogadores:
+        username, n_rodadas, lucro_total, ganhou = linha.split()
+        jogadores.append((username, n_rodadas, lucro_total, ganhou))
+
+    for j in jogadores:
+        if j[0] == nome:
+            return False
+    return True
+    
+
 def gerar_relatorio(player_username, player_rodadas, player_lucro_total, player_ganhou):
     with open("./jogadores.txt", "a", encoding="utf-8") as jogadores:
         if player_ganhou:

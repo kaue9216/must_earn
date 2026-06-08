@@ -181,10 +181,14 @@ QPushButton:pressed {
 
     def checar_usuario(self): # CHECA SE O USUARIO INSERIU UM USERNAME, SE SIM VAI PARA A TELA PRINCIPAL DO JOGO
         if self.username.text():
-            player.nome = self.username.text()
-            self.must_earn = MustEarn()
-            self.must_earn.show()
-            self.close()
+            if Histórico.validar_nome_disponivel(self.username.text()):
+                player.nome = self.username.text()
+                self.must_earn = MustEarn()
+                self.must_earn.show()
+                self.close()
+            else:
+                self.username.clear()
+                self.username.setPlaceholderText("Nome de usuário já utilizado")
         else:
             self.username.setPlaceholderText("Você deve inserir um nome de usuário")
 
