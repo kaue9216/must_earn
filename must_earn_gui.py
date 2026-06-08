@@ -19,6 +19,7 @@ class Login(QWidget):
         self.fred_fl_img = QLabel()
         self.texto_login = QLabel("Insira o nome de usuário:")
         self.username = QLineEdit()
+        self.erro_texto = QLabel("")
         self.botao_login = QPushButton("JOGAR")
 
 
@@ -114,6 +115,14 @@ QTextEdit {
         self.username.setFixedSize(500, 60)
         vbox.addWidget(self.username, alignment=Qt.AlignCenter)
 
+        self.erro_texto.setAlignment(Qt.AlignCenter)
+        self.erro_texto.setStyleSheet("""
+color: #FF2C2C;
+font-size: 20px;
+font-weight: bold; 
+""")
+        vbox.addWidget(self.erro_texto)
+
 
         self.botao_login.setFixedSize(300, 80)
         self.botao_login.setCursor(Qt.PointingHandCursor)
@@ -149,6 +158,7 @@ QLineEdit:focus {
     border: 2px solid #39FF88;
 }
 """)
+
 
         self.botao_login.setObjectName("botao_login")
 
@@ -188,9 +198,9 @@ QPushButton:pressed {
                 self.close()
             else:
                 self.username.clear()
-                self.username.setPlaceholderText("Nome de usuário já utilizado")
+                self.erro_texto.setText("Nome de usuário já utilizado")
         else:
-            self.username.setPlaceholderText("Você deve inserir um nome de usuário")
+            self.erro_texto.setText("Você deve inserir um nome de usuário")
 
 
 class GastosDiarios(QDialog):
@@ -976,7 +986,7 @@ QPushButton:pressed {
 
         # MOSTRA O CENARIO NO JORNAL
         self.jornal.append("=" * 30)
-        self.jornal.append(f"NOTÍCIA DO CENÁRIO SORTEADO (Cenário {cenario_sorteado}):")
+        self.jornal.append("NOTÍCIA DO CENÁRIO SORTEADO")
         self.jornal.append("=" * 30)
         self.jornal.append(texto_do_cenario)
         self.jornal.append("\n" + "=" * 30)
