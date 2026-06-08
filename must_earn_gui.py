@@ -603,7 +603,7 @@ QPushButton:pressed {
         self.titulo.setAlignment(Qt.AlignCenter)
 
         self.titulo.setStyleSheet("""
-color: #2DE2E6;
+color: #FFD700;
 font-size: 56px;
 font-weight: 900;
 letter-spacing: 4px;
@@ -612,7 +612,7 @@ letter-spacing: 4px;
         sombra = QGraphicsDropShadowEffect()
         sombra.setBlurRadius(35)
         sombra.setOffset(0)
-        sombra.setColor(QColor("#2DE2E6"))
+        sombra.setColor(QColor("#FFD700"))
 
         self.titulo.setGraphicsEffect(sombra)
 
