@@ -9,6 +9,9 @@ from player import Player
 import powerups
 
 
+from PyQt5.QtWidgets import QGraphicsDropShadowEffect
+from PyQt5.QtGui import QColor
+
 
 class Login(QWidget):
     def __init__(self):
@@ -24,20 +27,70 @@ class Login(QWidget):
 
         self.initUi()
 
+        self.setStyleSheet("""
+QWidget {
+    background-color: #020406;
+    color: #2DE2E6;
+    font-family: Consolas;
+}
+""")
 
 
     def initUi(self):
         self.setWindowTitle("MUST EARN")
         self.setFixedSize(900, 850)
 
+        self.setStyleSheet("""
+QWidget {
+    background-color: #020406;
+    color: #2DE2E6;
+    font-family: Consolas;
+}
+
+QLineEdit {
+    background-color: #071014;
+    color: #39FF88;
+    border: 2px solid #2DE2E6;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+QPushButton {
+    background-color: #071014;
+    color: #39FF88;
+    border: 2px solid #39FF88;
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #39FF88;
+    color: black;
+}
+
+QTextEdit {
+    background-color: #071014;
+    color: #39FF88;
+    border: 2px solid #2DE2E6;
+}
+""")
 
         vbox = QVBoxLayout()
         vbox.setAlignment(Qt.AlignTop | Qt.AlignCenter)
         vbox.setSpacing(30)
 
+        vbox.addWidget(self.titulo)
 
         self.titulo.setAlignment(Qt.AlignCenter)
-        vbox.addWidget(self.titulo)
+
+
+        sombra = QGraphicsDropShadowEffect()
+        sombra.setBlurRadius(30)
+        sombra.setColor(QColor("#00E5FF"))
+        sombra.setOffset(0)
+
+        self.titulo.setGraphicsEffect(sombra)
 
 
         pixmap = QPixmap("./must_earn.jpeg")
@@ -71,20 +124,75 @@ class Login(QWidget):
 
 
         self.titulo.setObjectName("titulo")
+
+        self.titulo.setStyleSheet("""
+color: #2DE2E6;
+font-size: 56px;
+font-weight: 900;
+letter-spacing: 4px;
+""")
+
+        sombra = QGraphicsDropShadowEffect()
+        sombra.setBlurRadius(35)
+        sombra.setOffset(0)
+        sombra.setColor(QColor("#2DE2E6"))
+
+        self.titulo.setGraphicsEffect(sombra)
+
         self.fred_fl_img.setObjectName("fred_fl_img")
         self.texto_login.setObjectName("texto_login")
+
+        self.texto_login.setStyleSheet("""
+color: #39FF88;
+font-size: 20px;
+font-weight: bold;
+""")
+
         self.username.setObjectName("username")
+
+        self.username.setStyleSheet("""
+QLineEdit {
+    background-color: #071014;
+    color: #39FF88;
+    border: 2px solid #2DE2E6;
+    border-radius: 10px;
+    padding-left: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+QLineEdit:focus {
+    border: 2px solid #39FF88;
+}
+""")
+
         self.botao_login.setObjectName("botao_login")
 
 
-        # self.setStyleSheet("""
-        # Login{
-        #     background-color: hsl(257, 4%, 9%)
-        # }
-# """)
 
 
         self.botao_login.clicked.connect(self.checar_usuario)
+
+        self.botao_login.setStyleSheet("""
+QPushButton {
+    background-color: #071014;
+    color: #39FF88;
+    border: 2px solid #39FF88;
+    border-radius: 10px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #39FF88;
+    color: black;
+}
+
+QPushButton:pressed {
+    background-color: #2DE2E6;
+    color: black;
+}
+""")
 
 
     def checar_usuario(self):
@@ -128,7 +236,67 @@ class GastosDiarios(QDialog):
 
     def initUi(self):
         self.setWindowTitle("MUST EARN")
-        self.setFixedSize(850, 450)
+        self.setFixedSize(1200, 700)
+
+        for lbl in [self.comida_status, self.remedio_status,
+            self.aluguel_status, self.saldo_status]:
+            lbl.setStyleSheet("""
+    color: #2DE2E6;
+    font-size: 18px;
+    font-weight: bold;
+    """)
+
+        self.setStyleSheet("""
+QDialog {
+    background-color: #020406;
+    color: #2DE2E6;
+    font-family: Consolas;
+}
+
+QLabel {
+    color: #D6F5FF;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+QPushButton {
+    background-color: #071014;
+    color: #39FF88;
+    border: 2px solid #39FF88;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #39FF88;
+    color: black;
+}
+
+QPushButton:pressed {
+    background-color: #2DE2E6;
+    color: black;
+}
+""")
+
+        self.comida_txt.setStyleSheet("""
+color: #39FF88;
+font-size: 22px;
+font-weight: 900;
+""")
+
+        self.remedio_txt.setStyleSheet("""
+color: #39FF88;
+font-size: 22px;
+font-weight: 900;
+""")
+
+        self.aluguel_txt.setStyleSheet("""
+color: #39FF88;
+font-size: 22px;
+font-weight: 900;
+""")
 
 
         vbox = QVBoxLayout()
@@ -200,6 +368,12 @@ class GastosDiarios(QDialog):
 
         vbox.addWidget(self.aviso)
         self.aviso.setAlignment(Qt.AlignCenter)
+
+        self.aviso.setStyleSheet("""
+color: #FF5555;
+font-size: 18px;
+font-weight: bold;
+""")
 
         vbox.addWidget(self.fechar, alignment=Qt.AlignCenter)
 
@@ -279,14 +453,59 @@ class GameOver(QDialog):
         self.setWindowTitle("MUST EARN")
         self.setFixedSize(900, 850)
 
+        self.setStyleSheet("""
+QWidget {
+    background-color: #020406;
+    color: #FF3131;
+    font-family: Consolas;
+}
+
+QPushButton {
+    background-color: #120505;
+    color: #FF3131;
+    border: 2px solid #FF3131;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #FF3131;
+    color: black;
+}
+
+QPushButton:pressed {
+    background-color: #FF6666;
+    color: black;
+}
+""")
+
+        # Título
+        self.titulo = QLabel("MUST EARN")
+        self.titulo.setAlignment(Qt.AlignCenter)
+
+        self.titulo.setStyleSheet("""
+color: #FF3131;
+font-size: 72px;
+font-weight: 900;
+letter-spacing: 6px;
+margin-top: 20px;
+""")
+
+        sombra = QGraphicsDropShadowEffect()
+        sombra.setBlurRadius(50)
+        sombra.setOffset(0)
+        sombra.setColor(QColor("#FF3131"))
+
+        self.titulo.setGraphicsEffect(sombra)
+
+
         vbox = QVBoxLayout()
         vbox.setAlignment(Qt.AlignTop | Qt.AlignHCenter)
         vbox.setSpacing(30)
 
-
-        self.titulo.setAlignment(Qt.AlignCenter)
         vbox.addWidget(self.titulo)
-
 
         pixmap_game_over = QPixmap("./must_earn_TelaDeDerrota.jpeg")
         pixmap_game_over = pixmap_game_over.scaled(
@@ -348,12 +567,55 @@ class TelaDaVitoria(QDialog):
         self.setWindowTitle("MUST EARN")
         self.setFixedSize(900, 850)
 
+        self.setStyleSheet("""
+QWidget {
+    background-color: #020406;
+    color: #2DE2E6;
+    font-family: Consolas;
+}
+
+QPushButton {
+    background-color: #071014;
+    color: #39FF88;
+    border: 2px solid #39FF88;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #39FF88;
+    color: black;
+}
+
+QPushButton:pressed {
+    background-color: #2DE2E6;
+    color: black;
+}
+""")
+
         vbox = QVBoxLayout()
         vbox.setAlignment(Qt.AlignTop | Qt.AlignHCenter)
         vbox.setSpacing(30)
 
 
         self.titulo.setAlignment(Qt.AlignCenter)
+
+        self.titulo.setStyleSheet("""
+color: #2DE2E6;
+font-size: 56px;
+font-weight: 900;
+letter-spacing: 4px;
+""")
+
+        sombra = QGraphicsDropShadowEffect()
+        sombra.setBlurRadius(35)
+        sombra.setOffset(0)
+        sombra.setColor(QColor("#2DE2E6"))
+
+        self.titulo.setGraphicsEffect(sombra)
+
         vbox.addWidget(self.titulo)
 
         pixmap_tela_vitoria = QPixmap("./must_earn_TelaDaVitoria.jpeg")
@@ -481,8 +743,54 @@ class MustEarn(QWidget):
     def initUi(self):
         #CRIACAO DO LAYOUT DA INTERFACE
         self.setWindowTitle("MUST EARN")
-        self.setFixedSize(450, 750)
+        self.setFixedSize(900, 850)
 
+        self.setStyleSheet("""
+QWidget {
+    background-color: #020406;
+    color: #2DE2E6;
+    font-family: Consolas;
+}
+
+QLabel {
+    color: #2DE2E6;
+    font-weight: bold;
+}
+
+QLineEdit {
+    background-color: #071014;
+    color: #39FF88;
+    border: 2px solid #2DE2E6;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+QTextEdit {
+    background-color: #071014;
+    color: #D6F5FF;
+    border: 2px solid #2DE2E6;
+    border-radius: 8px;
+}
+
+QPushButton {
+    background-color: #071014;
+    color: #39FF88;
+    border: 2px solid #39FF88;
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #39FF88;
+    color: black;
+}
+
+QPushButton:pressed {
+    background-color: #2DE2E6;
+    color: black;
+}
+""")
 
         vbox = QVBoxLayout()
 
@@ -658,7 +966,7 @@ class MustEarn(QWidget):
         self.checar_status()
 
         # Função que chama o histórico na main (Não consegui testar)
-        historico.registrar_dia(player)
+        #historico.registrar_dia(player)
 
         self.mostrar_cenario()
 
