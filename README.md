@@ -293,6 +293,6 @@ Além do desenvolvimento técnico, o jogo explora temas de educação financeira
 
 ---
 
-**PUCPR – Pontifícia Universidade Católica do Paraná**
-**Disciplina: Raciocínio Algorítmico**
+**PUCPR – Pontifícia Universidade Católica do Paraná** -
+**Disciplina: Raciocínio Algorítmico** - 
 **Projeto: Must Earn**
