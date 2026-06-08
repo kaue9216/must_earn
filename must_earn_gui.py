@@ -25,7 +25,7 @@ class Login(QWidget):
         self.initUi()
 
 
-   
+
     def initUi(self):
         self.setWindowTitle("MUST EARN")
         self.setFixedSize(900, 850)
@@ -55,7 +55,7 @@ class Login(QWidget):
         self.texto_login.setAlignment(Qt.AlignCenter)
         vbox.addWidget(self.texto_login)
 
-       
+
         self.username.setAlignment(Qt.AlignCenter)
         self.username.setPlaceholderText("Usuário...")
         self.username.setFixedSize(500, 60)
@@ -125,7 +125,7 @@ class GastosDiarios(QDialog):
 
         self.initUi()
 
-    
+
     def initUi(self):
         self.setWindowTitle("MUST EARN")
         self.setFixedSize(850, 450)
@@ -179,7 +179,7 @@ class GastosDiarios(QDialog):
         vbox_remedio.addWidget(self.remedio_botao)
         vbox_remedio.setAlignment(Qt.AlignCenter)
         hbox_opcoes.addLayout(vbox_remedio)
-        
+
         vbox_aluguel = QVBoxLayout()
         vbox_aluguel.addWidget(self.aluguel_txt, alignment=Qt.AlignCenter)
         vbox_aluguel.addWidget(self.aluguel_img)
@@ -226,8 +226,8 @@ class GastosDiarios(QDialog):
             return
         player.aumentar_comida()
         self.atualizar_status()
-    
-    
+
+
     def comprar_remedio(self):
         if player.remedio == player.max_remedio:
             self.aviso.setText("Remédio já está no maximo")
@@ -237,8 +237,8 @@ class GastosDiarios(QDialog):
             return
         player.aumentar_remedio()
         self.atualizar_status()
-    
-    
+
+
     def comprar_aluguel(self):
         if player.aluguel == player.max_aluguel:
             self.aviso.setText("Aluguel já está no maximo")
@@ -274,7 +274,7 @@ class GameOver(QDialog):
 
         self.initUi()
 
-    
+
     def initUi(self):
         self.setWindowTitle("MUST EARN")
         self.setFixedSize(900, 850)
@@ -326,7 +326,7 @@ class GameOver(QDialog):
         self.must_earn.close()
         self.accept()
 
-    
+
     def sair_do_jogo(self):
         QApplication.quit()
 
@@ -386,10 +386,10 @@ class TelaDaVitoria(QDialog):
 
 
         self.botao_restart.clicked.connect(self.restart)
-        self.botao_sair.clicked.connect(self.sair_do_jogo)       
+        self.botao_sair.clicked.connect(self.sair_do_jogo)
 
 
-    
+
     def restart(self):
         player.reset()
         self.login = Login()
@@ -397,7 +397,7 @@ class TelaDaVitoria(QDialog):
         self.must_earn.close()
         self.accept()
 
-    
+
     def sair_do_jogo(self):
         QApplication.quit()
 
@@ -409,6 +409,7 @@ class MustEarn(QWidget):
         self.lista_cenarios = [1, 2, 3, 4, 5, 6, 7, 8]
         self.validacao = True
         self.loja = powerups.Loja(player)
+
 
 
         # CRIACAO DOS BOTOES, TEXTOS, INPUTS, ETC
@@ -461,7 +462,7 @@ class MustEarn(QWidget):
         self.col_acoes_2 = QLabel("Fintechs", self)
         self.col_acoes_3 = QLabel("Cripto", self)
 
-       
+
         self.risco_cons = QLabel("C", self)
         self.risco_int = QLabel("I", self)
         self.risco_arr = QLabel("A", self)
@@ -476,7 +477,7 @@ class MustEarn(QWidget):
         self.initUi()
 
 
-   
+
     def initUi(self):
         #CRIACAO DO LAYOUT DA INTERFACE
         self.setWindowTitle("MUST EARN")
@@ -484,14 +485,14 @@ class MustEarn(QWidget):
 
 
         vbox = QVBoxLayout()
-       
-       
+
+
         vbox.addWidget(self.titulo)
 
 
         vbox.addWidget(self.username)
 
-       
+
         hbox_status = QHBoxLayout()
         hbox_status.addWidget(self.comida)
         hbox_status.addWidget(self.remedio)
@@ -526,7 +527,7 @@ class MustEarn(QWidget):
         hbox_col_acoes_2.addWidget(self.acao_4)
         hbox_col_acoes_2.addWidget(self.acao_5)
         hbox_col_acoes_2.addWidget(self.acao_6)
-       
+
         hbox_col_acoes_3 = QHBoxLayout()
         hbox_col_acoes_3.addWidget(self.risco_arr)
         hbox_col_acoes_3.addWidget(self.acao_7)
@@ -543,7 +544,7 @@ class MustEarn(QWidget):
         vbox.addLayout(vbox_acoes)
 
 
-       
+
         vbox.addWidget(self.botao_jogar)
 
 
@@ -557,9 +558,9 @@ class MustEarn(QWidget):
         self.acoes_valores = [self.acao_1, self.acao_2, self.acao_3,
                               self.acao_4, self.acao_5, self.acao_6,
                               self.acao_7, self.acao_8, self.acao_9]
-        
+
         self.mostrar_cenario()
-       
+
         #QUANDO CLICA O BOTAO RODA ESSA LINHA QUE CHAMA A FUNCAO INICIALIZAR_DADOS_ACOES()
         self.botao_jogar.clicked.connect(self.inicializar_dados_acoes)
         self.botao_loja.clicked.connect(self.abrir_loja)
@@ -584,15 +585,15 @@ class MustEarn(QWidget):
                 acao.clear()
                 self.validacao = False
                 return None
-        
+
         if player.aplicar_dinheiro(dinheiro_aplicado):
             self.saldo.setText(f"Saldo: R${str(round(player.dinheiro, 2))}")
         else:
             self.jornal.append("Saldo Insuficiente")
             self.validacao = False
             return None
-            
-       
+
+
         #DICIONARIO DO KAUE Q VAI SER RETORNADO, COM OS VALORES DOS INVESTIMENTOS
         dicionario_ativos = {
             "bigtech_cons" : float(valores[0]),
@@ -625,12 +626,12 @@ class MustEarn(QWidget):
         # 1. Aplica o cálculo matemático no dicionário
         dicionario_ativos_investimentos_iniciais = dicionario_ativos.copy()
         dicionario_atualizado = acoesv2.aplicar_cenario(self.cenario_sorteado, dicionario_ativos)
-        
+
 
         lucro_rodada = player.resultado_investimentos(dicionario_ativos_investimentos_iniciais, dicionario_atualizado)
         self.saldo.setText(f"Saldo: R${str(round(player.dinheiro, 2))}")
-        
-        
+
+
         # --- Outputs Formatados no Terminal ---
         self.jornal.append("VALOR ATUALIZADO DOS ATIVOS POST-PREGÃO:")
         self.jornal.append("=" * 30)
@@ -644,7 +645,7 @@ class MustEarn(QWidget):
         player.diminuir_aluguel()
 
         self.atualizar_status()
-        
+
         self.gastos_diarios = GastosDiarios()
         self.gastos_diarios.exec_()
 
@@ -655,6 +656,9 @@ class MustEarn(QWidget):
         self.atualizar_status()
 
         self.checar_status()
+
+        # Função que chama o histórico na main (Não consegui testar)
+        historico.registrar_dia(player)
 
         self.mostrar_cenario()
 
@@ -675,7 +679,7 @@ class MustEarn(QWidget):
 
         self.cenario_sorteado = cenario_sorteado
         return
-    
+
 
     def atualizar_status(self):
         self.comida.setText(f"Comida: {str(player.comida)}/{str(player.max_comida)}")

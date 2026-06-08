@@ -1,17 +1,21 @@
-b =[]
+# A lista fica guardada aqui, vazia no início do jogo
+lista_historico = []
 
-def adicionar_historico(aluguel, comida, remedio, saldo, lista_b):
-    a = {"aluguel":aluguel, "comida":comida, "remedio": remedio, "saldo":saldo}
-    lista_b.append(a)
+def registrar_dia(player_obj):
+    # Atualiza os pontos puxando o dinheiro atual do objeto passado pela GUI
+    player_obj.cont_pontos(player_obj.dinheiro)
 
-aluguel = 1
-comida = 1
-remedio = 1
-saldo = 1
-teste = 0
-while teste < 5:
-    adicionar_historico(aluguel, comida, remedio, saldo, b)
-    teste = teste+1
+    # Monta o dicionário
+    a = {
+        "aluguel": player_obj.aluguel,
+        "comida": player_obj.comida,
+        "remedio": player_obj.remedio,
+        "saldo": player_obj.dinheiro,
+        "pontos": player_obj.pontos
+    }
 
-for x in b:
-    print(x)
+    # Adiciona na lista
+    lista_historico.append(a)
+
+    # Imprime no terminal para você debugar e acompanhar
+    print(f"Histórico atualizado: {lista_historico}")
