@@ -10,6 +10,7 @@
 * Kauê Ogibowski
 * Leonardo Alquate
 
+  
 ---
 
 # Sobre o Projeto
@@ -25,7 +26,6 @@ O jogo foi desenvolvido como projeto da disciplina de **Raciocínio Algorítmico
 O jogador inicia sua jornada com um capital inicial de **R$ 1.500,00** e deve tomar decisões financeiras diariamente.
 
 - Insira o nome do jogador na tela de inicio.
-- 
 - Com seus **R$ 1.500,00** de capital inicial:
 - Escolha seus investimentos entre Big Techs, Fintechs e Criptomoedas
 - Acompanhe os indicadores de sobrevivência (aluguel, comida e remédio)
@@ -40,14 +40,14 @@ Durante cada rodada é necessário:
 * Adaptar-se aos cenários econômicos;
 * Maximizar o patrimônio acumulado.
 
-O jogador vence ao atingir uma situação financeira favorável e manter seus indicadores básicos estáveis. Caso algum indicador essencial chegue a zero, ocorre o Game Over.
-
-# Regras do Jogo
+ # Regras do Jogo
 
 - O jogador perde se qualquer indicador de sobrevivência chegar a zero.
 - O jogador precisa equilibrar investimentos e gastos diários.
 - Eventos aleatórios afetam o mercado financeiro diariamente.
 - O desempenho final é baseado no patrimônio acumulado.
+
+O jogador vence ao atingir uma situação financeira favorável e manter seus indicadores básicos estáveis. Caso algo diferente como algum indicador essencial chegue a zero, ocorre o Game Over.
 
 ---
 
