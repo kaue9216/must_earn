@@ -21,3 +21,8 @@
 -Rodadas: 5
 -Lucro Total: R$0.00
 -Perdeu
+
+5º - a:
+-Rodadas: 5
+-Lucro Total: R$0.00
+-Perdeu

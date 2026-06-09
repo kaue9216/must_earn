@@ -755,7 +755,7 @@ class MustEarn(QWidget):
         self.lista_cenarios = [1, 2, 3, 4, 5, 6, 7, 8]
         self.validacao = True
 
-        self.loja = None
+        self.loja = powerups.Loja(player)
         self.ranking = None
 
 
@@ -1122,6 +1122,9 @@ QPushButton:pressed {
     def checar_status(self): #AO FINAL DE TODA RODADA CHECA OS STATUS
         # 1. CHECA SE OS STATUS ESTAO ZERADOS, SE SIM PERDE O JOGO E ABRE TELA DE GAME OVER
         if player.comida == 0 or player.aluguel == 0 or player.remedio == 0:
+            if not self.loja.cruz.perdeu_jogo():
+                self.atualizar_status()
+                return
             Histórico.gerar_relatorio(player.nome, player.rodadas, player.lucro_total_partida, False)
             self.game_over = GameOver(self)
             self.game_over.exec_()

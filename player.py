@@ -2,7 +2,7 @@ class Player:
     def __init__(self):
         # ATRIBUTOS DO PLAYER
         self.nome = ""
-        self.dinheiro = 1500
+        self.dinheiro = 1500000
         self.aluguel = 3
         self.max_aluguel = 3
         self.comida = 3
@@ -51,6 +51,10 @@ class Player:
                 self.max_aluguel += valor
             except TypeError:
                 print("Valor Máximo Aluguel: Infinito")
+
+    
+    def aumentar_aluguel_cruz(self):
+        self.aluguel += 1
 
     
     def texto_status_aluguel(self):
@@ -106,6 +110,10 @@ class Player:
                 print("Valor Máximo comida: Infinito")
 
 
+    def aumentar_comida_cruz(self):
+        self.comida += 1
+
+
     def texto_status_comida(self):
         try:
             ponto_comida = []
@@ -156,6 +164,10 @@ class Player:
                 self.max_remedio += valor
             except TypeError:
                 print("Valor Máximo remedio: Infinito")
+
+    
+    def aumentar_remedio_cruz(self):
+        self.remedio += 1
 
     def texto_status_remedio(self):
         try:

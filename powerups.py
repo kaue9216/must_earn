@@ -101,16 +101,26 @@ class GeladeiraPremium:
 class Cruz:
     def __init__(self, player):
         self.comprado = False
+        self.usado = False
         self.player = player
 
     def comprar(self):
+        if self.comprado:
+            return False
         self.comprado = self.player.comprar_item(7500)
         if self.comprado:
-            self.player.aumentar_max_aluguel(1)
-            self.player.aumentar_max_comida(1)
-            self.player.aumentar_max_remedio(1)
             return self.comprado
         return self.comprado
+    
+    def perdeu_jogo(self):
+        if self.comprado and not self.usado:
+            self.player.aumentar_aluguel_cruz()
+            self.player.aumentar_comida_cruz()
+            self.player.aumentar_remedio_cruz()
+            self.usado = True
+            return False
+        return True
+
 
 class CarroEsportivo:
     def __init__(self, player):
@@ -829,6 +839,20 @@ font-weight: bold;
         self.folga_botao.clicked.connect(lambda: self.comprar_upgrade(i_upgrade=15, botao=self.folga_botao))
         self.parte_boa_cidade_botao.clicked.connect(lambda: self.comprar_upgrade(i_upgrade=16, botao=self.parte_boa_cidade_botao))
         self.videogame_botao.clicked.connect(lambda: self.comprar_upgrade(i_upgrade=17, botao=self.videogame_botao))
+
+
+        for upgrade, botao in zip(self.upgrades, [
+            self.macaco_digital_botao, self.alianca_botao, self.kitnet_botao,
+            self.galinha_botao, self.outra_galinha_botao, self.horario_almoco_botao,
+            self.colete_puffer_botao, self.geladeira_premium_botao, self.cruz_botao,
+            self.carro_esportivo_botao, self.faturamento_absurdo_botao, self.casa_propria_botao,
+            self.omega_3_botao, self.sus_botao, self.promocao_trabalho_botao, self.folga_botao,
+            self.parte_boa_cidade_botao, self.videogame_botao
+        ]):
+            if upgrade.comprado:
+                botao.setText("Comprado")
+                botao.setEnabled(False)
+
 
         self.botao_fechar.clicked.connect(self.accept)
         
