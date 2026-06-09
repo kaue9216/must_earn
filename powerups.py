@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QWidget, QLabel, QPushButton, QVBoxLayout, QHBoxLayout, QDialog, QScrollArea
-from PyQt5.QtGui import QPixmap
+from PyQt5.QtGui import QPixmap, QIcon
 from PyQt5.QtCore import Qt
 
 from PyQt5.QtWidgets import QGraphicsDropShadowEffect
@@ -359,6 +359,7 @@ class Loja(QDialog):
 
     def initUi(self):
         self.setWindowTitle("MUST EARN")
+        self.setWindowIcon(QIcon("./must_earn_icon.png"))
         self.setFixedSize(950, 850)
 
         self.setStyleSheet("""

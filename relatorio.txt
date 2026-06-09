@@ -1,28 +1,8 @@
 --- VENCEDORES ---
 
+1º - heitor:
+-Rodadas: 21
+-Lucro Total: R$503913.94
+-Ganhou
+
 --- PERDEDORES ---
-
-1º - heitor rebechi:
--Rodadas: 5
--Lucro Total: R$0.00
--Perdeu
-
-2º - gabriel dudeck:
--Rodadas: 5
--Lucro Total: R$0.00
--Perdeu
-
-3º - raffaelli:
--Rodadas: 5
--Lucro Total: R$0.00
--Perdeu
-
-4º - souza:
--Rodadas: 5
--Lucro Total: R$0.00
--Perdeu
-
-5º - a:
--Rodadas: 5
--Lucro Total: R$0.00
--Perdeu

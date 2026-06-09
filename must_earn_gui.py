@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QTextEdit, QLineEdit, QPushButton, QVBoxLayout, QHBoxLayout, QDialog
-from PyQt5.QtGui import QPixmap
+from PyQt5.QtGui import QPixmap, QIcon
 from PyQt5.QtCore import Qt
 import acoesv2
 import random
@@ -36,6 +36,7 @@ QWidget {
 
     def initUi(self):
         self.setWindowTitle("MUST EARN")
+        self.setWindowIcon(QIcon("./must_earn_icon.png"))
         self.setFixedSize(900, 850)
 
         self.setStyleSheet("""
@@ -219,6 +220,7 @@ class Ranking(QDialog):
     
     def initUi(self):
         self.setWindowTitle("MUST EARN")
+        self.setWindowIcon(QIcon("./must_earn_icon.png"))
         self.setFixedSize(900, 850)
 
         self.setStyleSheet("""
@@ -333,6 +335,7 @@ class GastosDiarios(QDialog):
 
     def initUi(self):
         self.setWindowTitle("MUST EARN")
+        self.setWindowIcon(QIcon("./must_earn_icon.png"))
         self.setFixedSize(1200, 700)
 
         for lbl in [self.comida_status, self.remedio_status,
@@ -548,6 +551,7 @@ class GameOver(QDialog):
 
     def initUi(self):
         self.setWindowTitle("MUST EARN")
+        self.setWindowIcon(QIcon("./must_earn_icon.png"))
         self.setFixedSize(900, 850)
 
         self.setStyleSheet("""
@@ -654,6 +658,7 @@ class TelaDaVitoria(QDialog):
 
     def initUi(self):
         self.setWindowTitle("MUST EARN")
+        self.setWindowIcon(QIcon("./must_earn_icon.png"))
         self.setFixedSize(900, 850)
 
         self.setStyleSheet("""
@@ -830,6 +835,7 @@ class MustEarn(QWidget):
     def initUi(self):
         #CRIACAO DO LAYOUT DA INTERFACE
         self.setWindowTitle("MUST EARN")
+        self.setWindowIcon(QIcon("./must_earn_icon.png"))
         self.setFixedSize(900, 850)
 
         self.setStyleSheet("""
@@ -989,8 +995,12 @@ QPushButton:pressed {
         for acao in acoes_valores:
             try:
                 if acao.text() == "": # TENTA PUXAR O VALOR DO INPUT E CASO DE ERRO RESOLVE
-                    valor = float(acao.placeholderText())
-                    valores.append(valor)
+                    self.jornal.append("!!Você deve investir!!")
+                    return
+                elif float(acao.text()) < 50:
+                    self.jornal.append("!!Você deve investir ao menos R$50.00 em todas as ações")
+                    acao.clear()
+                    return
                 else:
                     valor = float(acao.text())
                     valores.append(valor)
@@ -1108,7 +1118,7 @@ QPushButton:pressed {
         self.saldo.setText(f"Saldo: R${str(round(player.dinheiro, 2))}")
 
     def abrir_loja(self): #ABRE A LOJA DE POWERUPS
-        self.loja = powerups.Loja(player)
+        self.loja.atualizar_saldo()
         self.loja.exec_()
         self.atualizar_status()
         self.checar_status()

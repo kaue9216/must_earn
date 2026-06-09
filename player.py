@@ -2,7 +2,7 @@ class Player:
     def __init__(self):
         # ATRIBUTOS DO PLAYER
         self.nome = ""
-        self.dinheiro = 1500000
+        self.dinheiro = 1500
         self.aluguel = 3
         self.max_aluguel = 3
         self.comida = 3
@@ -256,12 +256,12 @@ class Player:
     def reset(self):
         self.nome = ""
         self.dinheiro = 1500
-        self.aluguel = 5
-        self.max_aluguel = 5
-        self.comida = 5
-        self.max_comida = 5
-        self.remedio = 5
-        self.max_remedio = 5
+        self.aluguel = 3
+        self.max_aluguel = 3
+        self.comida = 3
+        self.max_comida = 3
+        self.remedio = 3
+        self.max_remedio = 3
 
         self.lucro_total_partida = 0
         self.rodadas = 0
