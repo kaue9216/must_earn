@@ -80,7 +80,7 @@ QTextEdit {
         vbox.setSpacing(30)
 
 
-        pixmap_titulo = QPixmap("./must_earn_logo.jpeg")
+        pixmap_titulo = QPixmap("images/must_earn_logo.jpeg")
         pixmap_titulo = pixmap_titulo.scaled(
             512,
             288,
@@ -95,7 +95,7 @@ QTextEdit {
 
 
 
-        pixmap = QPixmap("./must_earn.jpeg")
+        pixmap = QPixmap("images/must_earn.jpeg")
         pixmap = pixmap.scaled(
             650,
             450,
@@ -421,7 +421,7 @@ font-weight: 900;
         vbox_comida = QVBoxLayout()
         vbox_comida.addWidget(self.comida_txt, alignment=Qt.AlignCenter)
         vbox_comida.addWidget(self.comida_img)
-        pixmap_comida = QPixmap("./must_earn_comida.jpeg")
+        pixmap_comida = QPixmap("images/must_earn_comida.jpeg")
         pixmap_comida = pixmap_comida.scaled(
             300,
             400,
@@ -436,7 +436,7 @@ font-weight: 900;
         vbox_remedio = QVBoxLayout()
         vbox_remedio.addWidget(self.remedio_txt, alignment=Qt.AlignCenter)
         vbox_remedio.addWidget(self.remedio_img)
-        pixmap_remedio = QPixmap("./must_earn_remedio.jpeg")
+        pixmap_remedio = QPixmap("images/must_earn_remedio.jpeg")
         pixmap_remedio = pixmap_remedio.scaled(
             300,
             400,
@@ -451,7 +451,7 @@ font-weight: 900;
         vbox_aluguel = QVBoxLayout()
         vbox_aluguel.addWidget(self.aluguel_txt, alignment=Qt.AlignCenter)
         vbox_aluguel.addWidget(self.aluguel_img)
-        pixmap_aluguel = QPixmap("./must_earn_aluguel.jpeg")
+        pixmap_aluguel = QPixmap("images/must_earn_aluguel.jpeg")
         pixmap_aluguel = pixmap_aluguel.scaled(
             300,
             400,
@@ -583,7 +583,7 @@ QPushButton:pressed {
 """)
 
         # Título
-        pixmap_titulo = QPixmap("./must_earn_logo.jpeg")
+        pixmap_titulo = QPixmap("images/must_earn_logo.jpeg")
         pixmap_titulo = pixmap_titulo.scaled(
             512,
             250,
@@ -600,7 +600,7 @@ QPushButton:pressed {
 
         vbox.addWidget(self.titulo)
 
-        pixmap_game_over = QPixmap("./must_earn_TelaDeDerrota.jpeg")
+        pixmap_game_over = QPixmap("images/must_earn_TelaDeDerrota.jpeg")
         pixmap_game_over = pixmap_game_over.scaled(
             650,
             500,
@@ -694,7 +694,7 @@ QPushButton:pressed {
         vbox.setSpacing(30)
 
 
-        pixmap_titulo = QPixmap("./must_earn_logo.jpeg")
+        pixmap_titulo = QPixmap("images/must_earn_logo.jpeg")
         pixmap_titulo = pixmap_titulo.scaled(
             512,
             288,
@@ -706,7 +706,7 @@ QPushButton:pressed {
 
         vbox.addWidget(self.titulo)
 
-        pixmap_tela_vitoria = QPixmap("./must_earn_TelaDaVitoria.jpeg")
+        pixmap_tela_vitoria = QPixmap("images/must_earn_TelaDaVitoria.jpeg")
         pixmap_tela_vitoria = pixmap_tela_vitoria.scaled(
             650,
             480,
