@@ -359,7 +359,7 @@ class Loja(QDialog):
 
     def initUi(self):
         self.setWindowTitle("MUST EARN")
-        self.setWindowIcon(QIcon("./must_earn_icon.png"))
+        self.setWindowIcon(QIcon("images/must_earn_icon.png"))
         self.setFixedSize(950, 850)
 
         self.setStyleSheet("""
@@ -456,7 +456,7 @@ font-weight: bold;
         # MACACO DIGITAL
         hbox_macaco_digital = QHBoxLayout()
         hbox_macaco_digital.addWidget(self.macaco_digital_img)
-        macaco_digital_pixmap = QPixmap("./must_earn_macaco_digital.jpeg")
+        macaco_digital_pixmap = QPixmap("images/must_earn_macaco_digital.jpeg")
         macaco_digital_pixmap = macaco_digital_pixmap.scaled(
             200,
             200,
@@ -474,7 +474,7 @@ font-weight: bold;
         # ALIANCA
         hbox_alianca = QHBoxLayout()
         hbox_alianca.addWidget(self.alianca_img)
-        alianca_pixmap = QPixmap("./must_earn_alianca.jpeg")
+        alianca_pixmap = QPixmap("images/must_earn_alianca.jpeg")
         alianca_pixmap = alianca_pixmap.scaled(
             200,
             200,
@@ -492,7 +492,7 @@ font-weight: bold;
         # KITNET
         hbox_kitnet = QHBoxLayout()
         hbox_kitnet.addWidget(self.kitnet_img)
-        kitnet_pixmap = QPixmap("./must_earn_kitnet.jpeg")
+        kitnet_pixmap = QPixmap("images/must_earn_kitnet.jpeg")
         kitnet_pixmap = kitnet_pixmap.scaled(
             200,
             200,
@@ -510,7 +510,7 @@ font-weight: bold;
         # GALINHA
         hbox_galinha = QHBoxLayout()
         hbox_galinha.addWidget(self.galinha_img)
-        galinha_pixmap = QPixmap("./must_earn_galinha.jpeg")
+        galinha_pixmap = QPixmap("images/must_earn_galinha.jpeg")
         galinha_pixmap = galinha_pixmap.scaled(
             200,
             200,
@@ -528,7 +528,7 @@ font-weight: bold;
         # OUTRA GALINHA
         hbox_outra_galinha = QHBoxLayout()
         hbox_outra_galinha.addWidget(self.outra_galinha_img)
-        outra_galinha_pixmap = QPixmap("./must_earn_outra_galinha.jpeg")
+        outra_galinha_pixmap = QPixmap("images/must_earn_outra_galinha.jpeg")
         outra_galinha_pixmap = outra_galinha_pixmap.scaled(
             200,
             200,
@@ -546,7 +546,7 @@ font-weight: bold;
         # HORARIO DE ALMOCO
         hbox_horario_almoco = QHBoxLayout()
         hbox_horario_almoco.addWidget(self.horario_almoco_img)
-        horario_almoco_pixmap = QPixmap("./must_earn_horario_almoco.jpeg")
+        horario_almoco_pixmap = QPixmap("images/must_earn_horario_almoco.jpeg")
         horario_almoco_pixmap = horario_almoco_pixmap.scaled(
             200,
             200,
@@ -564,7 +564,7 @@ font-weight: bold;
         # COLETE PUFFER
         hbox_colete_puffer = QHBoxLayout()
         hbox_colete_puffer.addWidget(self.colete_puffer_img)
-        colete_puffer_pixmap = QPixmap("./must_earn_colete_puffer.jpeg")
+        colete_puffer_pixmap = QPixmap("images/must_earn_colete_puffer.jpeg")
         colete_puffer_pixmap = colete_puffer_pixmap.scaled(
             200,
             200,
@@ -582,7 +582,7 @@ font-weight: bold;
         # GELADEIRA PREMIUM
         hbox_geladeira_premium = QHBoxLayout()
         hbox_geladeira_premium.addWidget(self.geladeira_premium_img)
-        geladeira_premium_pixmap = QPixmap("./must_earn_geladeira_premium.jpeg")
+        geladeira_premium_pixmap = QPixmap("images/must_earn_geladeira_premium.jpeg")
         geladeira_premium_pixmap = geladeira_premium_pixmap.scaled(
             200,
             200,
@@ -600,7 +600,7 @@ font-weight: bold;
         # CRUZ
         hbox_cruz = QHBoxLayout()
         hbox_cruz.addWidget(self.cruz_img)
-        cruz_pixmap = QPixmap("./must_earn_cruz.jpeg")
+        cruz_pixmap = QPixmap("images/must_earn_cruz.jpeg")
         cruz_pixmap = cruz_pixmap.scaled(
             200,
             200,
@@ -618,7 +618,7 @@ font-weight: bold;
         # CARRO ESPORTIVO
         hbox_carro_esportivo = QHBoxLayout()
         hbox_carro_esportivo.addWidget(self.carro_esportivo_img)
-        carro_esportivo_pixmap = QPixmap("./must_earn_carro_esportivo.jpeg")
+        carro_esportivo_pixmap = QPixmap("images/must_earn_carro_esportivo.jpeg")
         carro_esportivo_pixmap = carro_esportivo_pixmap.scaled(
             200,
             200,
@@ -636,7 +636,7 @@ font-weight: bold;
         # FATURAMENTO ABSURDO
         hbox_faturamento_absurdo = QHBoxLayout()
         hbox_faturamento_absurdo.addWidget(self.faturamento_absurdo_img)
-        faturamento_absurdo_pixmap = QPixmap("./must_earn_faturamento_absurdo.jpeg")
+        faturamento_absurdo_pixmap = QPixmap("images/must_earn_faturamento_absurdo.jpeg")
         faturamento_absurdo_pixmap = faturamento_absurdo_pixmap.scaled(
             200,
             200,
@@ -654,7 +654,7 @@ font-weight: bold;
         # CASA PROPRIA
         hbox_casa_propria = QHBoxLayout()
         hbox_casa_propria.addWidget(self.casa_propria_img)
-        casa_propria_pixmap = QPixmap("./must_earn_casa_propria.jpeg")
+        casa_propria_pixmap = QPixmap("images/must_earn_casa_propria.jpeg")
         casa_propria_pixmap = casa_propria_pixmap.scaled(
             200,
             200,
@@ -672,7 +672,7 @@ font-weight: bold;
         # OMEGA 3
         hbox_omega_3 = QHBoxLayout()
         hbox_omega_3.addWidget(self.omega_3_img)
-        omega_3_pixmap = QPixmap("./must_earn_omega_3.jpeg")
+        omega_3_pixmap = QPixmap("images/must_earn_omega_3.jpeg")
         omega_3_pixmap = omega_3_pixmap.scaled(
             200,
             200,
@@ -690,7 +690,7 @@ font-weight: bold;
         # SUS
         hbox_sus = QHBoxLayout()
         hbox_sus.addWidget(self.sus_img)
-        sus_pixmap = QPixmap("./must_earn_sus.jpeg")
+        sus_pixmap = QPixmap("images/must_earn_sus.jpeg")
         sus_pixmap = sus_pixmap.scaled(
             200,
             200,
@@ -708,7 +708,7 @@ font-weight: bold;
         # PROMOCAO TRABALHO
         hbox_promocao_trabalho = QHBoxLayout()
         hbox_promocao_trabalho.addWidget(self.promocao_trabalho_img)
-        promocao_trabalho_pixmap = QPixmap("./must_earn_promocao_trabalho.jpeg")
+        promocao_trabalho_pixmap = QPixmap("images/must_earn_promocao_trabalho.jpeg")
         promocao_trabalho_pixmap = promocao_trabalho_pixmap.scaled(
             200,
             200,
@@ -726,7 +726,7 @@ font-weight: bold;
         # FOLGA
         hbox_folga = QHBoxLayout()
         hbox_folga.addWidget(self.folga_img)
-        folga_pixmap = QPixmap("./must_earn_folga.jpeg")
+        folga_pixmap = QPixmap("images/must_earn_folga.jpeg")
         folga_pixmap = folga_pixmap.scaled(
             200,
             200,
@@ -744,7 +744,7 @@ font-weight: bold;
         # PARTE BOA DA CIDADE
         hbox_parte_boa_cidade = QHBoxLayout()
         hbox_parte_boa_cidade.addWidget(self.parte_boa_cidade_img)
-        parte_boa_cidade_pixmap = QPixmap("./must_earn_parte_boa_cidade.jpeg")
+        parte_boa_cidade_pixmap = QPixmap("images/must_earn_parte_boa_cidade.jpeg")
         parte_boa_cidade_pixmap = parte_boa_cidade_pixmap.scaled(
             200,
             200,
@@ -762,7 +762,7 @@ font-weight: bold;
         # VIDEOGAME
         hbox_videogame = QHBoxLayout()
         hbox_videogame.addWidget(self.videogame_img)
-        videogame_pixmap = QPixmap("./must_earn_videogame.jpeg")
+        videogame_pixmap = QPixmap("images/must_earn_videogame.jpeg")
         videogame_pixmap = videogame_pixmap.scaled(
             200,
             200,
